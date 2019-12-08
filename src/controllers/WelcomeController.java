@@ -4,6 +4,7 @@ import common.AppDialogs;
 import common.AppStrings;
 import common.AppURL;
 import common.StaticAttributes;
+import helpers.Log;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 
@@ -19,19 +20,17 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
-import javafx.stage.Modality;
 import javafx.stage.Stage;
-import javafx.stage.StageStyle;
 import sample.Main;
 
 public class WelcomeController implements Initializable {
 
     @FXML
     private Button btn_site_management, btn_employee_management;
-    private Label label;
     private ResourceBundle bundle;
     private Locale locale;
     Preferences pref;
+    Stage primaryStage;
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
@@ -39,12 +38,14 @@ public class WelcomeController implements Initializable {
         try {
             if (StaticAttributes.isSinhalaEnable) {
                 loadLang("sinhala");
+                loadAlertLang("sinhala");
             } else {
                 loadLang("english");
+                loadAlertLang("english");
             }
         } catch (Exception e) {
-            e.printStackTrace();
-            AppDialogs.viewDialog("Error", AppStrings.SOMETHING_WRONG, Alert.AlertType.ERROR, AppURL.ERROR_ALERT_ICON);
+            new Log("WelcomeController - navigateToNextStage : ", e).error();
+            AppDialogs.viewDialog(AppStrings.ERROR, AppStrings.SOMETHING_WRONG, Alert.AlertType.ERROR, AppURL.ERROR_ALERT_ICON, AppStrings.ALERT_BUTTON);
         }
     }
 
@@ -52,32 +53,37 @@ public class WelcomeController implements Initializable {
     public void didClick_btn_sinhala(ActionEvent event) throws Exception {
         pref.putBoolean(StaticAttributes.isSinhalaEnableKey, true);
         loadLang("sinhala");
+        loadAlertLang("sinhala");
     }
 
     @FXML
     public void didClick_btn_english(ActionEvent event) throws Exception {
         pref.putBoolean(StaticAttributes.isSinhalaEnableKey, false);
         loadLang("english");
+        loadAlertLang("english");
     }
 
     @FXML
     public void didClick_btn_SiteManagement(ActionEvent event) {
-
     }
 
     @FXML
     public void didClick_btn_EmployeeManagement(ActionEvent event) {
+        navigateToNextStage("/scenes/employee_management_selection.fxml");
+    }
+
+    private void navigateToNextStage(String scenePath) {
         try {
-            FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/scenes/employee_management_selection.fxml"));
+            primaryStage = (Stage) btn_site_management.getScene().getWindow();
+            FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource(scenePath));
             Parent root1 = (Parent) fxmlLoader.load();
+
             Stage stage = new Stage();
-            stage.initModality(Modality.APPLICATION_MODAL);
-            stage.initStyle(StageStyle.UNDECORATED);
-            stage.setTitle("ABC");
-            stage.setScene(new Scene(root1));
-            stage.show();
-        } catch(Exception e) {
-            e.printStackTrace();
+            StaticAttributes.setStage(stage, root1, primaryStage.getWidth(), primaryStage.getHeight());
+            primaryStage.close();
+        } catch (Exception e) {
+            new Log("WelcomeController - navigateToNextStage : ", e).error();
+            AppDialogs.viewDialog(AppStrings.ERROR, AppStrings.SOMETHING_WRONG, Alert.AlertType.ERROR, AppURL.ERROR_ALERT_ICON, AppStrings.ALERT_BUTTON);
         }
     }
 
@@ -87,6 +93,15 @@ public class WelcomeController implements Initializable {
 
         btn_site_management.setText(bundle.getString("btn_site_management"));
         btn_employee_management.setText(bundle.getString("btn_employee_management"));
+    }
+
+    private void loadAlertLang(String lang)throws Exception{
+        locale = new Locale(lang);
+        bundle = ResourceBundle.getBundle("common.lang", locale);
+
+        AppStrings.SOMETHING_WRONG = bundle.getString("SOMETHING_WRONG");
+        AppStrings.ERROR = bundle.getString("ERROR");
+        AppStrings.ALERT_BUTTON = bundle.getString("ALERT_BUTTON");
     }
 
 

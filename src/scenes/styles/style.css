@@ -11,3 +11,10 @@
     -fx-background-repeat: no-repeat;
     -fx-background-position: 05%;
 }
+
+#btn_back{
+    -fx-background-image: url("/assets/icons/back.png");
+    -fx-background-size: 30px;
+    -fx-background-repeat: no-repeat;
+    -fx-background-position: 05%;
+}

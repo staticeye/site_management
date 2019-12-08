@@ -14,7 +14,6 @@ import javafx.geometry.Rectangle2D;
 import java.util.prefs.Preferences;
 
 public class Main extends Application {
-    final double SCREEN_SAFE_VALUE = 100;
     Preferences pref;
 
     @Override
@@ -26,20 +25,7 @@ public class Main extends Application {
 
     private void createScene(Stage primaryStage) throws Exception {
         Parent root = FXMLLoader.load(getClass().getResource("../scenes/welcome_view.fxml"));
-        primaryStage.setTitle(AppStrings.SCENE_TITLE);
-        Image image = new Image(AppURL.APPLICATION_ICON);
-
-        Rectangle2D screenBounds = Screen.getPrimary().getBounds();
-        double screen_height = screenBounds.getHeight();
-        double screen_Width = screenBounds.getWidth();
-
-        primaryStage.setMinWidth(screen_Width * 0.5);
-        primaryStage.setMinHeight(screen_height * 0.5);
-
-        primaryStage.getIcons().add(image);
-        primaryStage.setMaximized(true);
-        primaryStage.setScene(new Scene(root, screen_Width * 0.5, screen_height * 0.5));
-        primaryStage.show();
+        StaticAttributes.setStage(primaryStage,root, -1, -1);
     }
 
     public static void main(String[] args) {
