@@ -1,4 +1,4 @@
-package controllers;
+package controllers.employee_management;
 
 import common.AppDialogs;
 import common.AppStrings;
@@ -12,6 +12,7 @@ import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
+import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 import sample.Main;
 import java.net.URL;
@@ -19,13 +20,16 @@ import java.util.Locale;
 import java.util.ResourceBundle;
 import java.util.prefs.Preferences;
 
-public class EmployeeManagementSelection implements Initializable {
+public class EmployeeManagementSelectionController implements Initializable {
     @FXML
     private Button btn_add_attendance, btn_view_attendance, btn_modify_employees, btn_back;
+    @FXML
+    private AnchorPane content_pane, root_pane;
     private ResourceBundle bundle;
     private Locale locale;
     Preferences pref;
     Stage primaryStage;
+
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
@@ -40,6 +44,21 @@ public class EmployeeManagementSelection implements Initializable {
             new Log("WelcomeController - navigateToNextStage : ", e).error();
             AppDialogs.viewDialog("Error", AppStrings.SOMETHING_WRONG, Alert.AlertType.ERROR, AppURL.ERROR_ALERT_ICON, AppStrings.ALERT_BUTTON);
         }
+    }
+
+    @FXML
+    public void didClick_addAttendance(){
+        loadUI("/scenes/employee_management/add_attendance.fxml");
+    }
+
+    @FXML
+    public void didClick_modifyEmployees(){
+        loadUI("/scenes/employee_management/modify_employees.fxml");
+    }
+
+    @FXML
+    public void didClick_viewAttendance(){
+        loadUI("/scenes/employee_management/view_attendance.fxml");
     }
 
     @FXML
@@ -72,4 +91,15 @@ public class EmployeeManagementSelection implements Initializable {
         }
     }
 
+    private void loadUI(String UiName){
+
+        try{
+            content_pane = FXMLLoader.load(getClass().getResource(UiName));
+            root_pane.getChildren().setAll(content_pane);
+        }catch (Exception e){
+            new Log("EmployeeManagementSelectionController - loadUI : ", e).error();
+            AppDialogs.viewDialog(AppStrings.ERROR, AppStrings.SOMETHING_WRONG, Alert.AlertType.ERROR, AppURL.ERROR_ALERT_ICON, AppStrings.ALERT_BUTTON);
+        }
+
+    }
 }

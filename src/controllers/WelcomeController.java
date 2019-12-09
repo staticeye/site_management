@@ -8,7 +8,6 @@ import helpers.Log;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 
-import java.awt.*;
 import java.net.URL;
 import java.util.Locale;
 import java.util.ResourceBundle;
@@ -17,7 +16,6 @@ import java.util.prefs.Preferences;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Parent;
-import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.stage.Stage;
@@ -52,6 +50,7 @@ public class WelcomeController implements Initializable {
     @FXML
     public void didClick_btn_sinhala(ActionEvent event) throws Exception {
         pref.putBoolean(StaticAttributes.isSinhalaEnableKey, true);
+        StaticAttributes.isSinhalaEnable = true;
         loadLang("sinhala");
         loadAlertLang("sinhala");
     }
@@ -59,6 +58,7 @@ public class WelcomeController implements Initializable {
     @FXML
     public void didClick_btn_english(ActionEvent event) throws Exception {
         pref.putBoolean(StaticAttributes.isSinhalaEnableKey, false);
+        StaticAttributes.isSinhalaEnable = false;
         loadLang("english");
         loadAlertLang("english");
     }
@@ -69,7 +69,7 @@ public class WelcomeController implements Initializable {
 
     @FXML
     public void didClick_btn_EmployeeManagement(ActionEvent event) {
-        navigateToNextStage("/scenes/employee_management_selection.fxml");
+        navigateToNextStage("/scenes/employee_management/employee_management_selection.fxml");
     }
 
     private void navigateToNextStage(String scenePath) {
@@ -95,7 +95,7 @@ public class WelcomeController implements Initializable {
         btn_employee_management.setText(bundle.getString("btn_employee_management"));
     }
 
-    private void loadAlertLang(String lang)throws Exception{
+    private void loadAlertLang(String lang) throws Exception {
         locale = new Locale(lang);
         bundle = ResourceBundle.getBundle("common.lang", locale);
 
