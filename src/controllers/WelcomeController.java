@@ -12,7 +12,6 @@ import java.net.URL;
 import java.util.Locale;
 import java.util.ResourceBundle;
 import java.util.prefs.Preferences;
-
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Parent;
@@ -69,7 +68,7 @@ public class WelcomeController implements Initializable {
 
     @FXML
     public void didClick_btn_EmployeeManagement(ActionEvent event) {
-        navigateToNextStage("/scenes/employee_management/employee_management_selection.fxml");
+        navigateToNextStage(AppURL.EMPLOYEE_MANAGEMENT_SELECTION);
     }
 
     private void navigateToNextStage(String scenePath) {

@@ -9,6 +9,7 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
@@ -34,6 +35,9 @@ public class EmployeeManagementSelectionController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         pref = Preferences.userNodeForPackage(Main.class);
+
+        loadUI(AppURL.ADD_ATTENDANCE_PATH);
+
         try {
             if (StaticAttributes.isSinhalaEnable) {
                 loadLang("sinhala");
@@ -41,29 +45,29 @@ public class EmployeeManagementSelectionController implements Initializable {
                 loadLang("english");
             }
         } catch (Exception e) {
-            new Log("WelcomeController - navigateToNextStage : ", e).error();
+            new Log("WelcomeController - initialize : ", e).error();
             AppDialogs.viewDialog("Error", AppStrings.SOMETHING_WRONG, Alert.AlertType.ERROR, AppURL.ERROR_ALERT_ICON, AppStrings.ALERT_BUTTON);
         }
     }
 
     @FXML
-    public void didClick_addAttendance(){
-        loadUI("/scenes/employee_management/add_attendance.fxml");
+    public void didClick_addAttendance() {
+        loadUI(AppURL.ADD_ATTENDANCE_PATH);
     }
 
     @FXML
-    public void didClick_modifyEmployees(){
-        loadUI("/scenes/employee_management/modify_employees.fxml");
+    public void didClick_modifyEmployees() {
+        loadUI(AppURL.MODIFY_EMPLOYEES);
     }
 
     @FXML
-    public void didClick_viewAttendance(){
-        loadUI("/scenes/employee_management/view_attendance.fxml");
+    public void didClick_viewAttendance() {
+        loadUI(AppURL.VIEW_ATTENDANCE);
     }
 
     @FXML
-    public void didClick_btn_back(ActionEvent event){
-        navigateToPreviousStage("/scenes/welcome_view.fxml");
+    public void didClick_btn_back(ActionEvent event) {
+        navigateToPreviousStage(AppURL.WELCOME_VIEW);
     }
 
     private void loadLang(String lang) throws Exception {
@@ -91,12 +95,19 @@ public class EmployeeManagementSelectionController implements Initializable {
         }
     }
 
-    private void loadUI(String UiName){
-
-        try{
+    private void loadUI(String UiName) {
+        try {
             content_pane = FXMLLoader.load(getClass().getResource(UiName));
-            root_pane.getChildren().setAll(content_pane);
-        }catch (Exception e){
+
+            //Content not taking the whole screen size issue solved here,
+            Node node = content_pane;
+            AnchorPane.setBottomAnchor(node, 0.0);
+            AnchorPane.setTopAnchor(node, 0.0);
+            AnchorPane.setLeftAnchor(node, 0.0);
+            AnchorPane.setRightAnchor(node, 0.0);
+
+            root_pane.getChildren().setAll(node);
+        } catch (Exception e) {
             new Log("EmployeeManagementSelectionController - loadUI : ", e).error();
             AppDialogs.viewDialog(AppStrings.ERROR, AppStrings.SOMETHING_WRONG, Alert.AlertType.ERROR, AppURL.ERROR_ALERT_ICON, AppStrings.ALERT_BUTTON);
         }
