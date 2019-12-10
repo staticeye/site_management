@@ -27,17 +27,12 @@
                             <children>
                                 <VBox prefHeight="200.0" prefWidth="300.0">
                                     <children>
-                                        <Button fx:id="btn_add_attendance" maxWidth="300.0" mnemonicParsing="false" onAction="#didClick_addAttendance" prefHeight="40.0" prefWidth="300.0" text="Add Attendance">
+                                        <Button fx:id="btn_attendance" maxWidth="300.0" mnemonicParsing="false" onAction="#didClick_addAttendance" prefHeight="40.0" prefWidth="300.0" text="Attendance Details">
                                             <VBox.margin>
                                                 <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
                                             </VBox.margin>
                                         </Button>
-                                        <Button fx:id="btn_view_attendance" maxWidth="300.0" mnemonicParsing="false" onAction="#didClick_viewAttendance" prefHeight="40.0" prefWidth="300.0" text="View Attendance">
-                                            <VBox.margin>
-                                                <Insets bottom="10.0" left="10.0" right="10.0" />
-                                            </VBox.margin>
-                                        </Button>
-                                        <Button fx:id="btn_modify_employees" maxWidth="300.0" mnemonicParsing="false" onAction="#didClick_modifyEmployees" prefHeight="40.0" prefWidth="300.0" text="Modify Employees">
+                                        <Button fx:id="btn_employee" maxWidth="300.0" mnemonicParsing="false" onAction="#didClick_modifyEmployees" prefHeight="40.0" prefWidth="300.0" text="Employee Details">
                                             <VBox.margin>
                                                 <Insets bottom="10.0" left="10.0" right="10.0" />
                                             </VBox.margin>

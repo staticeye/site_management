@@ -9,9 +9,9 @@
          <top>
             <ToolBar prefHeight="40.0" prefWidth="200.0" BorderPane.alignment="CENTER">
                <items>
-                  <Button fx:id="btn_view_employee" mnemonicParsing="false" text="Add Attendance" />
-                  <Button fx:id="btn_add_employee" layoutX="10.0" layoutY="12.0" mnemonicParsing="false" text="View Attendance" />
-                  <Button fx:id="btn_update_delete_employee" layoutX="111.0" layoutY="12.0" mnemonicParsing="false" text="Update / Delete Attendance" />
+                  <Button fx:id="btn_add_attendance" mnemonicParsing="false" text="Add Attendance" />
+                  <Button fx:id="btn_view_attendance" layoutX="10.0" layoutY="12.0" mnemonicParsing="false" text="View Attendance" />
+                  <Button fx:id="btn_update_delete_attendance" layoutX="111.0" layoutY="12.0" mnemonicParsing="false" text="Update / Delete Attendance" />
                </items>
             </ToolBar>
          </top></BorderPane>

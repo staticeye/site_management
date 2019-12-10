@@ -23,7 +23,7 @@ import java.util.prefs.Preferences;
 
 public class EmployeeManagementSelectionController implements Initializable {
     @FXML
-    private Button btn_add_attendance, btn_view_attendance, btn_modify_employees, btn_back;
+    private Button btn_attendance, btn_employee, btn_back;
     @FXML
     private AnchorPane content_pane, root_pane;
     private ResourceBundle bundle;
@@ -74,15 +74,14 @@ public class EmployeeManagementSelectionController implements Initializable {
         locale = new Locale(lang);
         bundle = ResourceBundle.getBundle("common.lang", locale);
 
-        btn_add_attendance.setText(bundle.getString("btn_add_attendance"));
-        btn_view_attendance.setText(bundle.getString("btn_view_attendance"));
-        btn_modify_employees.setText(bundle.getString("btn_modify_employees"));
+        btn_attendance.setText(bundle.getString("btn_attendance"));
+        btn_employee.setText(bundle.getString("btn_employee"));
         btn_back.setText(bundle.getString("btn_back"));
     }
 
     private void navigateToPreviousStage(String scenePath) {
         try {
-            primaryStage = (Stage) btn_add_attendance.getScene().getWindow();
+            primaryStage = (Stage) btn_attendance.getScene().getWindow();
             FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource(scenePath));
             Parent root1 = (Parent) fxmlLoader.load();
 

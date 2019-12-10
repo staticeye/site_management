@@ -13,7 +13,7 @@ import java.net.URL;
 import java.util.Locale;
 import java.util.ResourceBundle;
 
-public class ModifyEmployeesController implements Initializable {
+public class EmployeeDetailsController implements Initializable {
     @FXML
     private Button btn_view_employee, btn_add_employee, btn_update_delete_employee;
     private ResourceBundle bundle;
@@ -28,7 +28,7 @@ public class ModifyEmployeesController implements Initializable {
                 loadLang("english");
             }
         } catch (Exception e) {
-            new Log("ModifyEmployeesController - initialize : ", e).error();
+            new Log("EmployeeDetailsController - initialize : ", e).error();
             AppDialogs.viewDialog("Error", AppStrings.SOMETHING_WRONG, Alert.AlertType.ERROR, AppURL.ERROR_ALERT_ICON, AppStrings.ALERT_BUTTON);
         }
     }
@@ -40,7 +40,6 @@ public class ModifyEmployeesController implements Initializable {
         btn_view_employee.setText(bundle.getString("btn_view_employee"));
         btn_add_employee.setText(bundle.getString("btn_add_employee"));
         btn_update_delete_employee.setText(bundle.getString("btn_update_delete_employee"));
-
     }
 
 }
