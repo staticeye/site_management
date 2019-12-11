@@ -7,8 +7,8 @@ public class AppURL {
     final public static String ERROR_ALERT_ICON = "/assets/icons/error.png";
 
     //Fxml file paths
-    final public static String ADD_ATTENDANCE_PATH = "/scenes/employee_management/attendance_details.fxml";
-    final public static String MODIFY_EMPLOYEES = "/scenes/employee_management/employee_details.fxml";
+    final public static String ADD_ATTENDANCE_PATH = "/scenes/employee_management/attendance_details/attendance_details.fxml";
+    final public static String MODIFY_EMPLOYEES = "/scenes/employee_management/employee_details/employee_details.fxml";
     final public static String VIEW_ATTENDANCE = "/scenes/employee_management/view_attendance.fxml";
     final public static String WELCOME_VIEW = "/scenes/welcome_view.fxml";
     final public static String EMPLOYEE_MANAGEMENT_SELECTION = "/scenes/employee_management/employee_management_selection.fxml";

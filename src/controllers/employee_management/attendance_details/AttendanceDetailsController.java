@@ -1,4 +1,4 @@
-package controllers.employee_management;
+package controllers.employee_management.attendance_details;
 
 import common.AppDialogs;
 import common.AppStrings;

@@ -1,4 +1,4 @@
-package controllers.employee_management;
+package controllers.employee_management.employee_details;
 
 import common.AppDialogs;
 import common.AppStrings;
@@ -7,19 +7,38 @@ import common.StaticAttributes;
 import helpers.Log;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
-import javafx.scene.control.Alert;
-import javafx.scene.control.Tab;
+import javafx.scene.control.*;
 import javafx.scene.layout.GridPane;
+
 import java.net.URL;
 import java.util.Locale;
 import java.util.ResourceBundle;
 
 public class EmployeeDetailsController implements Initializable {
+    //Employee details
     @FXML
     private Tab btn_view_employee, btn_add_employee, btn_update_delete_employee;
 
+    //Add employee details
     @FXML
-    private GridPane sub_gridpane, gridpane;
+    private Label employee_id_label, employee_name_label, employee_mobile_label, join_date_label, occupation_label, daily_salary_label, ot_rate_label, annual_bonus_label;
+    @FXML
+    Button btn_add, btn_clear;
+    @FXML
+    CheckBox join_date_today_check;
+    @FXML
+    DatePicker datepicker;
+
+    //View employee details
+    @FXML
+    private TableView sub_table;
+    @FXML
+    private Label view_employee_id_label, view_employee_name_label, view_employee_mobile_label, view_join_date_label, view_occupation_label, view_daily_salary_label, view_ot_rate_label, view_annual_bonus_label;
+
+    //Update/Delete employee details
+
+    @FXML
+    private GridPane sub_gridpane;
     private ResourceBundle bundle;
     private Locale locale;
 
@@ -31,19 +50,51 @@ public class EmployeeDetailsController implements Initializable {
             } else {
                 loadLang("english");
             }
+            setGridPane();
         } catch (Exception e) {
             new Log("EmployeeDetailsController - initialize : ", e).error();
             AppDialogs.viewDialog("Error", AppStrings.SOMETHING_WRONG, Alert.AlertType.ERROR, AppURL.ERROR_ALERT_ICON, AppStrings.ALERT_BUTTON);
         }
     }
 
+    private void setGridPane() {
+        GridPane.setColumnSpan(sub_gridpane, 5);
+        GridPane.setColumnSpan(sub_table, 3);
+        GridPane.setRowSpan(sub_table, 8);
+    }
+
     private void loadLang(String lang) throws Exception {
         locale = new Locale(lang);
         bundle = ResourceBundle.getBundle("common.lang", locale);
 
+        //Employee details - root
         btn_view_employee.setText(bundle.getString("btn_view_employee"));
         btn_add_employee.setText(bundle.getString("btn_add_employee"));
         btn_update_delete_employee.setText(bundle.getString("btn_update_delete_employee"));
+
+        //Add employee
+        employee_id_label.setText(bundle.getString("employee_id"));
+        employee_name_label.setText(bundle.getString("employee_name"));
+        employee_mobile_label.setText(bundle.getString("employee_mobile_number"));
+        join_date_label.setText(bundle.getString("emoployee_join_date"));
+        occupation_label.setText(bundle.getString("employee_occupation"));
+        daily_salary_label.setText(bundle.getString("employee_daily_salary"));
+        ot_rate_label.setText(bundle.getString("employee_ot_rate"));
+        annual_bonus_label.setText(bundle.getString("employee_bonus"));
+        btn_add.setText(bundle.getString("btn_add"));
+        btn_clear.setText(bundle.getString("btn_clear"));
+        join_date_today_check.setText(bundle.getString("join_date_today_check"));
+
+        //View employee
+        view_employee_id_label.setText(bundle.getString("employee_id"));
+        view_employee_name_label.setText(bundle.getString("employee_name"));
+        view_employee_mobile_label.setText(bundle.getString("employee_mobile_number"));
+        view_join_date_label.setText(bundle.getString("emoployee_join_date"));
+        view_occupation_label.setText(bundle.getString("employee_occupation"));
+        view_daily_salary_label.setText(bundle.getString("employee_daily_salary"));
+        view_ot_rate_label.setText(bundle.getString("employee_ot_rate"));
+        view_annual_bonus_label.setText(bundle.getString("employee_bonus"));
+
     }
 
 }
