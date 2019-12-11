@@ -5,16 +5,24 @@ import common.AppStrings;
 import common.AppURL;
 import common.StaticAttributes;
 import helpers.Log;
+import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Alert;
-
+import javafx.scene.control.CheckBox;
+import javafx.scene.control.Label;
 import java.net.URL;
 import java.util.Locale;
 import java.util.ResourceBundle;
 
-public class DayWiseAttendance implements Initializable {
+public class DayWiseAttendanceController implements Initializable {
     private ResourceBundle bundle;
     private Locale locale;
+
+    @FXML
+    Label select_date, id, name, occupation, mobile_number, status;
+
+    @FXML
+    CheckBox today_date_check;
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
@@ -34,5 +42,12 @@ public class DayWiseAttendance implements Initializable {
         locale = new Locale(lang);
         bundle = ResourceBundle.getBundle("common.lang", locale);
 
+        select_date.setText(bundle.getString("select_date"));
+        today_date_check.setText(bundle.getString("join_date_today_check"));
+        id.setText(bundle.getString("employee_id"));
+        name.setText(bundle.getString("employee_name"));
+        occupation.setText(bundle.getString("employee_occupation"));
+        mobile_number.setText(bundle.getString("employee_mobile_number"));
+        status.setText(bundle.getString("status"));
     }
 }
