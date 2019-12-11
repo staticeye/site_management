@@ -117,8 +117,8 @@
                                                 <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
                                             </GridPane.margin>
                                         </TableView>
-                              <DatePicker GridPane.columnIndex="1" GridPane.rowIndex="3" />
-                              <ComboBox prefWidth="150.0" GridPane.columnIndex="1" GridPane.rowIndex="4" />
+                                        <DatePicker GridPane.columnIndex="1" GridPane.rowIndex="3" />
+                                        <ComboBox prefWidth="150.0" GridPane.columnIndex="1" GridPane.rowIndex="4" />
                                     </children>
                                 </GridPane>
                             </children>
@@ -249,7 +249,7 @@
                                                 <Insets right="10.0" />
                                             </GridPane.margin>
                                         </TextField>
-                                        <TextField GridPane.columnIndex="4" GridPane.rowIndex="2">
+                                        <TextField fx:id="annual_bonus" GridPane.columnIndex="4" GridPane.rowIndex="2">
                                             <GridPane.margin>
                                                 <Insets right="10.0" />
                                             </GridPane.margin>
@@ -289,7 +289,178 @@
                 </Tab>
                 <Tab fx:id="btn_update_delete_employee" text="Update / Delete Employee">
                     <content>
-                        <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" />
+                        <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                            <children>
+                                <GridPane fx:id="update_gridpane" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                                    <columnConstraints>
+                                        <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="35.0" />
+                                        <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="150.0" />
+                                        <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="10.0" />
+                                        <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="35.0" />
+                                        <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                                    </columnConstraints>
+                                    <rowConstraints>
+                                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                    </rowConstraints>
+                                    <children>
+                                        <Label fx:id="update_employee_id_label" text="Id">
+                                            <GridPane.margin>
+                                                <Insets left="10.0" />
+                                            </GridPane.margin>
+                                        </Label>
+                                        <Label fx:id="update_employee_name_label" text="Name" GridPane.rowIndex="1">
+                                            <GridPane.margin>
+                                                <Insets left="10.0" />
+                                            </GridPane.margin>
+                                        </Label>
+                                        <Label fx:id="update_employee_mobile_label" text="Mobile Number" GridPane.rowIndex="2">
+                                            <GridPane.margin>
+                                                <Insets left="10.0" />
+                                            </GridPane.margin>
+                                        </Label>
+                                        <Label fx:id="update_join_date_label" text="Join Date" GridPane.rowIndex="3">
+                                            <GridPane.margin>
+                                                <Insets left="10.0" />
+                                            </GridPane.margin>
+                                        </Label>
+                                        <Label fx:id="update_occupation_label" text="Occupation" GridPane.rowIndex="4">
+                                            <GridPane.margin>
+                                                <Insets left="10.0" />
+                                            </GridPane.margin>
+                                        </Label>
+                                        <Label fx:id="update_daily_salary_label" text="Daily Salary" GridPane.rowIndex="5">
+                                            <GridPane.margin>
+                                                <Insets left="10.0" />
+                                            </GridPane.margin>
+                                        </Label>
+                                        <Label fx:id="update_ot_rate_label" text="OT Rate" GridPane.rowIndex="6">
+                                            <GridPane.margin>
+                                                <Insets left="10.0" />
+                                            </GridPane.margin>
+                                        </Label>
+                                        <Label fx:id="update_annual_bonus_label" text="Annual Bonus" GridPane.rowIndex="7">
+                                            <GridPane.margin>
+                                                <Insets left="10.0" />
+                                            </GridPane.margin>
+                                        </Label>
+                                        <TextField GridPane.columnIndex="1" />
+                                        <TextField fx:id="update_employee_name" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+                                        <GridPane GridPane.columnIndex="1" GridPane.rowIndex="2">
+                                            <columnConstraints>
+                                                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                                            </columnConstraints>
+                                            <rowConstraints>
+                                                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                            </rowConstraints>
+                                            <children>
+                                                <TextField fx:id="update_employee_mobile_1" />
+                                                <TextField fx:id="update_employee_mobile_2" GridPane.rowIndex="1" />
+                                            </children>
+                                        </GridPane>
+
+                                        <TextField fx:id="update_daily_salary" GridPane.columnIndex="1" GridPane.rowIndex="5">
+                                            <GridPane.margin>
+                                                <Insets />
+                                            </GridPane.margin>
+                                        </TextField>
+                                        <TextField GridPane.columnIndex="1" GridPane.rowIndex="6">
+                                            <GridPane.margin>
+                                                <Insets />
+                                            </GridPane.margin>
+                                        </TextField>
+                                        <TextField GridPane.columnIndex="1" GridPane.rowIndex="7">
+                                            <GridPane.margin>
+                                                <Insets />
+                                            </GridPane.margin>
+                                        </TextField>
+                                        <TableView fx:id="update_table" prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="2">
+                                            <columns>
+                                                <TableColumn prefWidth="75.0" text="C1" />
+                                                <TableColumn prefWidth="75.0" text="C2" />
+                                            </columns>
+                                            <GridPane.margin>
+                                                <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+                                            </GridPane.margin>
+                                        </TableView>
+                                        <GridPane GridPane.columnIndex="1" GridPane.rowIndex="3">
+                                            <columnConstraints>
+                                                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="75.0" />
+                                                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="50.0" />
+                                            </columnConstraints>
+                                            <rowConstraints>
+                                                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                            </rowConstraints>
+                                            <children>
+                                                <DatePicker fx:id="update_datepicker" />
+                                                <CheckBox fx:id="update_join_date_today_check" mnemonicParsing="false" text="Today Date" GridPane.columnIndex="1">
+                                                    <GridPane.margin>
+                                                        <Insets left="5.0" />
+                                                    </GridPane.margin>
+                                                </CheckBox>
+                                            </children>
+                                        </GridPane>
+                                        <GridPane GridPane.columnIndex="1" GridPane.rowIndex="4">
+                                            <columnConstraints>
+                                                <ColumnConstraints hgrow="SOMETIMES" maxWidth="194.4" minWidth="10.0" prefWidth="170" />
+                                                <ColumnConstraints hgrow="SOMETIMES" maxWidth="65.4" minWidth="10.0" prefWidth="50" />
+                                            </columnConstraints>
+                                            <rowConstraints>
+                                                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+
+                                            </rowConstraints>
+                                            <children>
+                                                <ComboBox prefHeight="26.0" prefWidth="195.0" />
+                                                <Button fx:id="btn_update_occupations" mnemonicParsing="false" GridPane.columnIndex="1">
+                                                    <GridPane.margin>
+                                                        <Insets left="5.0" />
+                                                    </GridPane.margin>
+                                                    <padding>
+                                                        <Insets bottom="5.0" left="15.0" right="15.0" top="5.0" />
+                                                    </padding>
+                                                </Button>
+                                            </children>
+                                        </GridPane>
+                                        <GridPane fx:id="update_sub_gridpane" GridPane.rowIndex="8">
+                                            <columnConstraints>
+                                                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                                                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                                            </columnConstraints>
+                                            <rowConstraints>
+                                                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                            </rowConstraints>
+                                            <children>
+                                                <Button fx:id="btn_update" mnemonicParsing="false" text="Update" GridPane.halignment="RIGHT">
+                                                    <padding>
+                                                        <Insets bottom="5.0" left="25.0" right="25.0" top="5.0" />
+                                                    </padding>
+                                                    <GridPane.margin>
+                                                        <Insets right="5.0" />
+                                                    </GridPane.margin>
+                                                </Button>
+                                                <Button fx:id="btn_delete" mnemonicParsing="false" style="-fx-background-color: red;" text="Delete" textFill="WHITE" GridPane.columnIndex="1" GridPane.halignment="LEFT">
+                                                    <padding>
+                                                        <Insets bottom="5.0" left="25.0" right="25.0" top="5.0" />
+                                                    </padding>
+                                                    <GridPane.margin>
+                                                        <Insets left="5.0" />
+                                                    </GridPane.margin>
+                                                </Button>
+                                            </children>
+                                        </GridPane>
+
+                                    </children>
+                                </GridPane>
+                            </children>
+                        </AnchorPane>
                     </content>
                 </Tab>
             </tabs>

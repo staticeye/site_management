@@ -36,6 +36,16 @@ public class EmployeeDetailsController implements Initializable {
     private Label view_employee_id_label, view_employee_name_label, view_employee_mobile_label, view_join_date_label, view_occupation_label, view_daily_salary_label, view_ot_rate_label, view_annual_bonus_label;
 
     //Update/Delete employee details
+    @FXML
+    private Button btn_update, btn_delete;
+    @FXML
+    private TableView update_table;
+    @FXML
+    private GridPane update_sub_gridpane;
+    @FXML
+    private Label update_employee_id_label, update_employee_name_label, update_employee_mobile_label, update_join_date_label, update_occupation_label, update_daily_salary_label, update_ot_rate_label, update_annual_bonus_label;
+    @FXML
+    CheckBox update_join_date_today_check;
 
     @FXML
     private GridPane sub_gridpane;
@@ -61,6 +71,9 @@ public class EmployeeDetailsController implements Initializable {
         GridPane.setColumnSpan(sub_gridpane, 5);
         GridPane.setColumnSpan(sub_table, 3);
         GridPane.setRowSpan(sub_table, 8);
+        GridPane.setColumnSpan(update_table, 3);
+        GridPane.setRowSpan(update_table, 8);
+        GridPane.setColumnSpan(update_sub_gridpane, 5);
     }
 
     private void loadLang(String lang) throws Exception {
@@ -94,6 +107,19 @@ public class EmployeeDetailsController implements Initializable {
         view_daily_salary_label.setText(bundle.getString("employee_daily_salary"));
         view_ot_rate_label.setText(bundle.getString("employee_ot_rate"));
         view_annual_bonus_label.setText(bundle.getString("employee_bonus"));
+
+        //Update delete employee
+        update_employee_id_label.setText(bundle.getString("employee_id"));
+        update_employee_name_label.setText(bundle.getString("employee_name"));
+        update_employee_mobile_label.setText(bundle.getString("employee_mobile_number"));
+        update_join_date_label.setText(bundle.getString("emoployee_join_date"));
+        update_occupation_label.setText(bundle.getString("employee_occupation"));
+        update_daily_salary_label.setText(bundle.getString("employee_daily_salary"));
+        update_ot_rate_label.setText(bundle.getString("employee_ot_rate"));
+        update_annual_bonus_label.setText(bundle.getString("employee_bonus"));
+        btn_update.setText(bundle.getString("btn_update"));
+        btn_delete.setText(bundle.getString("btn_delete"));
+        update_join_date_today_check.setText(bundle.getString("join_date_today_check"));
 
     }
 

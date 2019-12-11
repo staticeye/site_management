@@ -19,7 +19,7 @@
     -fx-background-position: 05%;
 }
 
-#btn_edit_occupations{
+#btn_edit_occupations, #btn_update_occupations{
     -fx-background-image: url("/assets/icons/pencil.png");
     -fx-background-size: 30px;
     -fx-background-repeat: no-repeat;
