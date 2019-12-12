@@ -9,9 +9,11 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
+import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 
 import java.net.URL;
@@ -22,6 +24,9 @@ public class SitesManagementSelectionController implements Initializable {
 
     @FXML
     Button btn_add_new_site, btn_view_sites, btn_maintain_menu, btn_maintain_sub_menus, btn_back;
+    @FXML
+    private AnchorPane content_pane, root_pane;
+
     Stage primaryStage;
     private ResourceBundle bundle;
     private Locale locale;
@@ -44,6 +49,14 @@ public class SitesManagementSelectionController implements Initializable {
     @FXML
     public void didClick_btn_back(ActionEvent event) {
         navigateToPreviousStage(AppURL.WELCOME_VIEW);
+    }
+
+    @FXML
+    public void didClick_btn_menu_maintain(){loadUI(AppURL.MENU_MAINTAIN);}
+
+    @FXML
+    public void didClick_btn_sub_menu_maintain(){
+        loadUI(AppURL.SUB_MENU_MAINTAIN);
     }
 
     private void navigateToPreviousStage(String scenePath) {
@@ -70,6 +83,24 @@ public class SitesManagementSelectionController implements Initializable {
         btn_maintain_menu.setText(bundle.getString("btn_maintain_menu"));
         btn_maintain_sub_menus.setText(bundle.getString("btn_maintain_sub_menus"));
         btn_back.setText(bundle.getString("btn_back"));
+    }
+
+    private void loadUI(String UiName) {
+        try {
+            content_pane = FXMLLoader.load(getClass().getResource(UiName));
+
+            //Content not taking the whole screen size issue solved here,
+            Node node = content_pane;
+            AnchorPane.setBottomAnchor(node, 0.0);
+            AnchorPane.setTopAnchor(node, 0.0);
+            AnchorPane.setLeftAnchor(node, 0.0);
+            AnchorPane.setRightAnchor(node, 0.0);
+            root_pane.getChildren().setAll(node);
+        } catch (Exception e) {
+            new Log("SitesManagementSelectionController - loadUI : ", e).error();
+            AppDialogs.viewDialog(AppStrings.ERROR, AppStrings.SOMETHING_WRONG, Alert.AlertType.ERROR, AppURL.ERROR_ALERT_ICON, AppStrings.ALERT_BUTTON);
+        }
+
     }
 
 

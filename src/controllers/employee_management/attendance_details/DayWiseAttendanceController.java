@@ -10,6 +10,8 @@ import javafx.fxml.Initializable;
 import javafx.scene.control.Alert;
 import javafx.scene.control.CheckBox;
 import javafx.scene.control.Label;
+import javafx.scene.control.TableView;
+
 import java.net.URL;
 import java.util.Locale;
 import java.util.ResourceBundle;
@@ -20,9 +22,10 @@ public class DayWiseAttendanceController implements Initializable {
 
     @FXML
     Label select_date, id, name, occupation, mobile_number, status;
-
     @FXML
     CheckBox today_date_check;
+    @FXML
+    TableView tableView;
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
@@ -39,6 +42,7 @@ public class DayWiseAttendanceController implements Initializable {
     }
 
     private void loadLang(String lang) throws Exception {
+
         locale = new Locale(lang);
         bundle = ResourceBundle.getBundle("common.lang", locale);
 
@@ -49,5 +53,7 @@ public class DayWiseAttendanceController implements Initializable {
         occupation.setText(bundle.getString("employee_occupation"));
         mobile_number.setText(bundle.getString("employee_mobile_number"));
         status.setText(bundle.getString("status"));
+
+        tableView.setPlaceholder(new Label(bundle.getString("no_table_view_content")));
     }
 }

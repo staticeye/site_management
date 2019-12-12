@@ -110,7 +110,7 @@
                         <RowConstraints maxHeight="750.0" minHeight="10.0" prefHeight="750.0" vgrow="SOMETIMES" />
                     </rowConstraints>
                     <children>
-                        <TableView maxWidth="500.0" prefHeight="500.0" prefWidth="200.0" GridPane.rowIndex="1">
+                        <TableView fx:id="tableView" maxWidth="500.0" prefHeight="500.0" prefWidth="200.0" GridPane.rowIndex="1">
                             <columns>
                                 <TableColumn prefWidth="75.0" text="C1" />
                                 <TableColumn prefWidth="75.0" text="C2" />

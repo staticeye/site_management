@@ -10,6 +10,7 @@ import javafx.fxml.Initializable;
 import javafx.scene.control.Alert;
 import javafx.scene.control.CheckBox;
 import javafx.scene.control.Label;
+import javafx.scene.control.TableView;
 
 import java.net.URL;
 import java.util.Locale;
@@ -22,9 +23,10 @@ public class YearWiseAttendanceController implements Initializable {
     @FXML
     Label id, name, occupation, mobile_number, select_year, month_january, month_february, month_march, month_april, month_may, month_june, month_july,
             month_august, month_september, month_october, month_november, month_december;
-
     @FXML
     CheckBox current_year_check;
+    @FXML
+    TableView tableView;
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
@@ -62,5 +64,7 @@ public class YearWiseAttendanceController implements Initializable {
         month_october.setText(bundle.getString("month_october"));
         month_november.setText(bundle.getString("month_november"));
         month_december.setText(bundle.getString("month_december"));
+
+        tableView.setPlaceholder(new Label(bundle.getString("no_table_view_content")));
     }
 }

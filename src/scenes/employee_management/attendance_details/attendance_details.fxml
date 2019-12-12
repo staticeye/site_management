@@ -121,7 +121,7 @@
                                         </children>
                                     </GridPane>
                                     <TextField fx:id="add_attendance_search" maxWidth="500.0" prefWidth="300.0" GridPane.halignment="CENTER" GridPane.rowIndex="1" />
-                                    <TableView prefHeight="200.0" prefWidth="200.0" GridPane.rowIndex="2">
+                                    <TableView fx:id="add_attendance_tableView" prefHeight="200.0" prefWidth="200.0" GridPane.rowIndex="2">
                                         <columns>
                                             <TableColumn prefWidth="75.0" text="C1" />
                                             <TableColumn prefWidth="75.0" text="C2" />
@@ -203,7 +203,7 @@
                                             </children>
                                         </GridPane>
                                         <TextField fx:id="update_attendance_search" maxWidth="500.0" prefWidth="300.0" GridPane.halignment="CENTER" GridPane.rowIndex="1" />
-                                        <TableView prefHeight="200.0" prefWidth="200.0" GridPane.rowIndex="2">
+                                        <TableView fx:id="update_attendance_tableView" prefHeight="200.0" prefWidth="200.0" GridPane.rowIndex="2">
                                             <columns>
                                                 <TableColumn prefWidth="75.0" text="C1" />
                                                 <TableColumn prefWidth="75.0" text="C2" />

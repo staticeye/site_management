@@ -37,12 +37,12 @@
                                                 <Insets bottom="10.0" left="10.0" right="10.0" />
                                             </VBox.margin>
                                         </Button>
-                              <Button fx:id="btn_maintain_menu" layoutX="20.0" layoutY="71.0" maxWidth="300.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="300.0" text="Menu Maintain">
+                              <Button fx:id="btn_maintain_menu" layoutX="20.0" layoutY="71.0" maxWidth="300.0" mnemonicParsing="false" onAction="#didClick_btn_menu_maintain" prefHeight="40.0" prefWidth="300.0" text="Menu Maintain">
                                  <VBox.margin>
                                     <Insets left="10.0" right="10.0" />
                                  </VBox.margin>
                               </Button>
-                              <Button fx:id="btn_maintain_sub_menus" layoutX="20.0" layoutY="121.0" maxWidth="300.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="300.0" text="Sub Menu Maintain">
+                              <Button fx:id="btn_maintain_sub_menus" layoutX="20.0" layoutY="121.0" maxWidth="300.0" mnemonicParsing="false" onAction="#didClick_btn_sub_menu_maintain" prefHeight="40.0" prefWidth="300.0" text="Sub Menu Maintain">
                                  <VBox.margin>
                                     <Insets left="10.0" right="10.0" top="10.0" />
                                  </VBox.margin>

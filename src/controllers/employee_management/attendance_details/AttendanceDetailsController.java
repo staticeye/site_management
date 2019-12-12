@@ -36,12 +36,16 @@ public class AttendanceDetailsController implements Initializable {
     Label date_id;
     @FXML
     Button btn_save_draft, btn_submit;
+    @FXML
+    TableView add_attendance_tableView;
 
     //Update delete Attendance
     @FXML
     Button btn_delete, btn_update;
     @FXML
     Label update_date_id;
+    @FXML
+    TableView update_attendance_tableView;
 
 
     @Override
@@ -119,6 +123,9 @@ public class AttendanceDetailsController implements Initializable {
         btn_delete.setText(bundle.getString("btn_delete_attendance"));
         btn_update.setText(bundle.getString("btn_update_attendance"));
         update_date_id.setText(bundle.getString("date_id"));
+
+        add_attendance_tableView.setPlaceholder(new Label(bundle.getString("no_table_view_content")));
+        update_attendance_tableView.setPlaceholder(new Label(bundle.getString("no_table_view_content")));
     }
 
     private void loadUI(String UiName) {

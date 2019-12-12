@@ -20,5 +20,7 @@ public class AppURL {
     final public static String HIGHEST_NONATTENDED_MENU = "/scenes/employee_management/attendance_details/highest_non_attended.fxml";
     final public static String LOWEST_ATTENDED_MENU = "/scenes/employee_management/attendance_details/lowest_attended.fxml";
     final public static String LOWEST_NONATTENDED_MENU = "/scenes/employee_management/attendance_details/lowest_non_attended.fxml";
+    final public static String MENU_MAINTAIN = "/scenes/sites_management/menu_maintain/menu_maintain.fxml";
+    final public static String SUB_MENU_MAINTAIN = "/scenes/sites_management/sub_menu_maintain/sub_menu_maintain.fxml";
 
 }

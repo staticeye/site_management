@@ -7,10 +7,8 @@ import common.StaticAttributes;
 import helpers.Log;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
-import javafx.scene.control.Alert;
-import javafx.scene.control.Button;
-import javafx.scene.control.CheckBox;
-import javafx.scene.control.Label;
+import javafx.scene.control.*;
+
 import java.net.URL;
 import java.util.Locale;
 import java.util.ResourceBundle;
@@ -25,6 +23,8 @@ public class MonthWiseAttendanceController implements Initializable {
     CheckBox current_month_check;
     @FXML
     Button btn_view_attendance_dates, btn_view_non_attendance_dates;
+    @FXML
+    TableView tableView;
 
 
     @Override
@@ -55,5 +55,7 @@ public class MonthWiseAttendanceController implements Initializable {
         non_attendance_dates.setText(bundle.getString("non_attendance_dates"));
         btn_view_attendance_dates.setText(bundle.getString("btn_view_attendance_dates"));
         btn_view_non_attendance_dates.setText(bundle.getString("btn_view_non_attendance_dates"));
+
+        tableView.setPlaceholder(new Label(bundle.getString("no_table_view_content")));
     }
 }

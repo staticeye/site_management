@@ -121,6 +121,8 @@ public class EmployeeDetailsController implements Initializable {
         btn_delete.setText(bundle.getString("btn_delete"));
         update_join_date_today_check.setText(bundle.getString("join_date_today_check"));
 
+        sub_table.setPlaceholder(new Label(bundle.getString("no_table_view_content")));
+        update_table.setPlaceholder(new Label(bundle.getString("no_table_view_content")));
     }
 
 }
