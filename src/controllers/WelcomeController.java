@@ -64,6 +64,7 @@ public class WelcomeController implements Initializable {
 
     @FXML
     public void didClick_btn_SiteManagement(ActionEvent event) {
+        navigateToNextStage(AppURL.SITES_MANAGEMENT_SELECTION);
     }
 
     @FXML

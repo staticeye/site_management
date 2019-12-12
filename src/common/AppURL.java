@@ -12,6 +12,7 @@ public class AppURL {
     final public static String VIEW_ATTENDANCE = "/scenes/employee_management/view_attendance.fxml";
     final public static String WELCOME_VIEW = "/scenes/welcome_view.fxml";
     final public static String EMPLOYEE_MANAGEMENT_SELECTION = "/scenes/employee_management/employee_management_selection.fxml";
+    final public static String SITES_MANAGEMENT_SELECTION = "/scenes/sites_management/sites_management_selection.fxml";
     final public static String DAY_WISE_ATTENDANCE_MENU = "/scenes/employee_management/attendance_details/day_wise_attendance.fxml";
     final public static String MONTH_WISE_ATTENDANCE_MENU = "/scenes/employee_management/attendance_details/month_wise_attendance.fxml";
     final public static String YEAR_WISE_ATTENDANCE_MENU = "/scenes/employee_management/attendance_details/year_wise_attendance.fxml";

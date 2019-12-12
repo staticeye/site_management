@@ -15,26 +15,23 @@ import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
-import sample.Main;
 import java.net.URL;
 import java.util.Locale;
 import java.util.ResourceBundle;
-import java.util.prefs.Preferences;
 
 public class EmployeeManagementSelectionController implements Initializable {
     @FXML
     private Button btn_attendance, btn_employee, btn_back;
     @FXML
     private AnchorPane content_pane, root_pane;
+
     private ResourceBundle bundle;
     private Locale locale;
-    Preferences pref;
     Stage primaryStage;
 
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        pref = Preferences.userNodeForPackage(Main.class);
 
         loadUI(AppURL.ADD_ATTENDANCE_PATH);
 
@@ -45,7 +42,7 @@ public class EmployeeManagementSelectionController implements Initializable {
                 loadLang("english");
             }
         } catch (Exception e) {
-            new Log("WelcomeController - initialize : ", e).error();
+            new Log("EmployeeManagementSelectionController - initialize : ", e).error();
             AppDialogs.viewDialog("Error", AppStrings.SOMETHING_WRONG, Alert.AlertType.ERROR, AppURL.ERROR_ALERT_ICON, AppStrings.ALERT_BUTTON);
         }
     }
