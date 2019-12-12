@@ -10,10 +10,7 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Node;
-import javafx.scene.control.Alert;
-import javafx.scene.control.Button;
-import javafx.scene.control.Label;
-import javafx.scene.control.Tab;
+import javafx.scene.control.*;
 import javafx.scene.layout.AnchorPane;
 import java.net.URL;
 import java.util.Locale;
@@ -31,6 +28,21 @@ public class AttendanceDetailsController implements Initializable {
     private Label view_filter;
     @FXML
     private Button view_day_wise, view_month_wise, view_year_wise, view_highest_attended, view_lowest_attended, view_highest_non_attended, view_lowest_non_attended;
+
+    //Add attendance
+    @FXML
+    private CheckBox current_date_check;
+    @FXML
+    Label date_id;
+    @FXML
+    Button btn_save_draft, btn_submit;
+
+    //Update delete Attendance
+    @FXML
+    Button btn_delete, btn_update;
+    @FXML
+    Label update_date_id;
+
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
@@ -98,6 +110,15 @@ public class AttendanceDetailsController implements Initializable {
         view_lowest_attended.setText(bundle.getString("view_lowest_attended"));
         view_highest_non_attended.setText(bundle.getString("view_highest_non_attended"));
         view_lowest_non_attended.setText(bundle.getString("view_lowest_non_attended"));
+
+        current_date_check.setText(bundle.getString("join_date_today_check"));
+        date_id.setText(bundle.getString("date_id"));
+        btn_save_draft.setText(bundle.getString("btn_save_draft"));
+        btn_submit.setText(bundle.getString("btn_submit"));
+
+        btn_delete.setText(bundle.getString("btn_delete_attendance"));
+        btn_update.setText(bundle.getString("btn_update_attendance"));
+        update_date_id.setText(bundle.getString("date_id"));
     }
 
     private void loadUI(String UiName) {

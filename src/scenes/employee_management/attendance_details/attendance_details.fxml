@@ -11,69 +11,231 @@
                 <Tab fx:id="btn_view_attendance" text="View Attendance">
                     <content>
                         <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
-                     <children>
-                        <SplitPane dividerPositions="0.29797979797979796" prefHeight="160.0" prefWidth="200.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
-                          <items>
-                            <AnchorPane maxWidth="220.0" minHeight="0.0" minWidth="200.0" prefHeight="160.0" prefWidth="220.0">
-                                 <children>
-                                    <VBox layoutX="48.0" layoutY="103.0" maxWidth="250.0" minWidth="200.0" prefHeight="200.0" prefWidth="250.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
-                                       <children>
-                                          <Label fx:id="view_filter" maxWidth="250.0" mnemonicParsing="false" prefWidth="250.0" text="Filters" textAlignment="CENTER" textOverrun="CLIP">
-                                             <VBox.margin>
-                                                <Insets left="10.0" right="10.0" top="10.0" />
-                                             </VBox.margin></Label>
-                                          <Button fx:id="view_day_wise" layoutX="20.0" layoutY="20.0" maxWidth="250.0" mnemonicParsing="false" onAction="#didClick_dayWiseAttendance" prefHeight="40.0" prefWidth="250.0" text="Day Wise">
-                                             <VBox.margin>
-                                                <Insets left="10.0" right="10.0" top="10.0" />
-                                             </VBox.margin>
-                                          </Button>
-                                          <Button fx:id="view_month_wise" layoutX="20.0" layoutY="56.0" maxWidth="250.0" mnemonicParsing="false" onAction="#didClick_monthWiseAttendance" prefHeight="40.0" prefWidth="250.0" text="Month Wise">
-                                             <VBox.margin>
-                                                <Insets left="10.0" right="10.0" top="10.0" />
-                                             </VBox.margin>
-                                          </Button>
-                                          <Button fx:id="view_year_wise" layoutX="20.0" layoutY="92.0" maxWidth="250.0" mnemonicParsing="false" onAction="#didClick_yearWiseAttendance" prefHeight="40.0" prefWidth="250.0" text="Year Wise">
-                                             <VBox.margin>
-                                                <Insets left="10.0" right="10.0" top="10.0" />
-                                             </VBox.margin>
-                                          </Button>
-                                          <Button fx:id="view_highest_attended" layoutX="20.0" layoutY="128.0" maxWidth="250.0" mnemonicParsing="false" onAction="#didClick_highestAttended" prefHeight="40.0" prefWidth="250.0" text="Highest Attended">
-                                             <VBox.margin>
-                                                <Insets left="10.0" right="10.0" top="10.0" />
-                                             </VBox.margin>
-                                          </Button>
-                                          <Button fx:id="view_lowest_attended" layoutX="20.0" layoutY="164.0" maxWidth="250.0" mnemonicParsing="false" onAction="#didClick_lowestAttended" prefHeight="40.0" prefWidth="250.0" text="Lowest Attended">
-                                             <VBox.margin>
-                                                <Insets left="10.0" right="10.0" top="10.0" />
-                                             </VBox.margin>
-                                          </Button>
-                                          <Button fx:id="view_highest_non_attended" layoutX="20.0" layoutY="250.0" maxWidth="250.0" mnemonicParsing="false" onAction="#didClick_highestNonAttended" prefHeight="40.0" prefWidth="250.0" text="Highest Non-Attended">
-                                             <VBox.margin>
-                                                <Insets left="10.0" right="10.0" top="10.0" />
-                                             </VBox.margin>
-                                          </Button>
-                                          <Button fx:id="view_lowest_non_attended" layoutX="20.0" layoutY="300.0" maxWidth="250.0" mnemonicParsing="false" onAction="#didClick_lowestNonAttended" prefHeight="40.0" prefWidth="250.0" text="Lowest Non-Attended">
-                                             <VBox.margin>
-                                                <Insets left="10.0" right="10.0" top="10.0" />
-                                             </VBox.margin>
-                                          </Button>
-                                       </children></VBox>
-                                 </children></AnchorPane>
-                            <AnchorPane fx:id="root_pane" minHeight="0.0" minWidth="0.0" prefHeight="160.0" prefWidth="100.0" />
-                          </items>
-                        </SplitPane>
-                     </children></AnchorPane>
+                            <children>
+                                <SplitPane dividerPositions="0.29797979797979796" prefHeight="160.0" prefWidth="200.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                                    <items>
+                                        <AnchorPane maxWidth="220.0" minHeight="0.0" minWidth="200.0" prefHeight="160.0" prefWidth="220.0">
+                                            <children>
+                                                <VBox layoutX="48.0" layoutY="103.0" maxWidth="250.0" minWidth="200.0" prefHeight="200.0" prefWidth="250.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                                                    <children>
+                                                        <Label fx:id="view_filter" maxWidth="250.0" mnemonicParsing="false" prefWidth="250.0" text="Filters" textAlignment="CENTER" textOverrun="CLIP">
+                                                            <VBox.margin>
+                                                                <Insets left="10.0" right="10.0" top="10.0" />
+                                                            </VBox.margin>
+                                                        </Label>
+                                                        <Button fx:id="view_day_wise" layoutX="20.0" layoutY="20.0" maxWidth="250.0" mnemonicParsing="false" onAction="#didClick_dayWiseAttendance" prefHeight="40.0" prefWidth="250.0" text="Day Wise">
+                                                            <VBox.margin>
+                                                                <Insets left="10.0" right="10.0" top="10.0" />
+                                                            </VBox.margin>
+                                                        </Button>
+                                                        <Button fx:id="view_month_wise" layoutX="20.0" layoutY="56.0" maxWidth="250.0" mnemonicParsing="false" onAction="#didClick_monthWiseAttendance" prefHeight="40.0" prefWidth="250.0" text="Month Wise">
+                                                            <VBox.margin>
+                                                                <Insets left="10.0" right="10.0" top="10.0" />
+                                                            </VBox.margin>
+                                                        </Button>
+                                                        <Button fx:id="view_year_wise" layoutX="20.0" layoutY="92.0" maxWidth="250.0" mnemonicParsing="false" onAction="#didClick_yearWiseAttendance" prefHeight="40.0" prefWidth="250.0" text="Year Wise">
+                                                            <VBox.margin>
+                                                                <Insets left="10.0" right="10.0" top="10.0" />
+                                                            </VBox.margin>
+                                                        </Button>
+                                                        <Button fx:id="view_highest_attended" layoutX="20.0" layoutY="128.0" maxWidth="250.0" mnemonicParsing="false" onAction="#didClick_highestAttended" prefHeight="40.0" prefWidth="250.0" text="Highest Attended">
+                                                            <VBox.margin>
+                                                                <Insets left="10.0" right="10.0" top="10.0" />
+                                                            </VBox.margin>
+                                                        </Button>
+                                                        <Button fx:id="view_lowest_attended" layoutX="20.0" layoutY="164.0" maxWidth="250.0" mnemonicParsing="false" onAction="#didClick_lowestAttended" prefHeight="40.0" prefWidth="250.0" text="Lowest Attended">
+                                                            <VBox.margin>
+                                                                <Insets left="10.0" right="10.0" top="10.0" />
+                                                            </VBox.margin>
+                                                        </Button>
+                                                        <Button fx:id="view_highest_non_attended" layoutX="20.0" layoutY="250.0" maxWidth="250.0" mnemonicParsing="false" onAction="#didClick_highestNonAttended" prefHeight="40.0" prefWidth="250.0" text="Highest Non-Attended">
+                                                            <VBox.margin>
+                                                                <Insets left="10.0" right="10.0" top="10.0" />
+                                                            </VBox.margin>
+                                                        </Button>
+                                                        <Button fx:id="view_lowest_non_attended" layoutX="20.0" layoutY="300.0" maxWidth="250.0" mnemonicParsing="false" onAction="#didClick_lowestNonAttended" prefHeight="40.0" prefWidth="250.0" text="Lowest Non-Attended">
+                                                            <VBox.margin>
+                                                                <Insets left="10.0" right="10.0" top="10.0" />
+                                                            </VBox.margin>
+                                                        </Button>
+                                                    </children>
+                                                </VBox>
+                                            </children>
+                                        </AnchorPane>
+                                        <AnchorPane fx:id="root_pane" minHeight="0.0" minWidth="0.0" prefHeight="160.0" prefWidth="100.0" />
+                                    </items>
+                                </SplitPane>
+                            </children>
+                        </AnchorPane>
                     </content>
                 </Tab>
                 <Tab fx:id="btn_add_attendance" text="Add Attendance">
                     <content>
                     <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                        <children>
+                            <GridPane prefHeight="359.0" prefWidth="585.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                                <columnConstraints>
+                                    <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="200.0" />
+                                </columnConstraints>
+                                <rowConstraints>
+                                    <RowConstraints maxHeight="35.0" minHeight="40.0" prefHeight="35.0" vgrow="SOMETIMES" />
+                                    <RowConstraints maxHeight="40.0" minHeight="40.0" prefHeight="40.0" vgrow="SOMETIMES" />
+                                    <RowConstraints maxHeight="800.0" minHeight="40.0" prefHeight="750.0" vgrow="SOMETIMES" />
+                                    <RowConstraints maxHeight="40.0" minHeight="40.0" prefHeight="40.0" vgrow="SOMETIMES" />
+                                </rowConstraints>
+                                <children>
+                                    <GridPane prefHeight="15.0" prefWidth="600.0">
+                                        <columnConstraints>
+                                            <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                                            <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                                        </columnConstraints>
+                                        <rowConstraints>
+                                            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                        </rowConstraints>
+                                        <children>
+                                            <Label fx:id="date_id" text="Date" GridPane.halignment="RIGHT">
+                                                <GridPane.margin>
+                                                    <Insets right="10.0" top="5.0" />
+                                                </GridPane.margin>
+                                            </Label>
+                                            <GridPane GridPane.columnIndex="1">
+                                                <columnConstraints>
+                                                    <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                                                    <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                                                </columnConstraints>
+                                                <rowConstraints>
+                                                    <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                                </rowConstraints>
+                                                <children>
+                                                    <DatePicker maxWidth="-Infinity" prefWidth="Infinity">
+                                                        <GridPane.margin>
+                                                            <Insets top="5.0" />
+                                                        </GridPane.margin></DatePicker>
+                                                    <CheckBox fx:id="current_date_check" mnemonicParsing="false" text="CheckBox" GridPane.columnIndex="1">
+                                                        <GridPane.margin>
+                                                            <Insets left="5.0" top="5.0" />
+                                                        </GridPane.margin>
+                                                    </CheckBox>
+                                                </children>
+                                            </GridPane>
+                                        </children>
+                                    </GridPane>
+                                    <TextField fx:id="add_attendance_search" maxWidth="500.0" prefWidth="300.0" GridPane.halignment="CENTER" GridPane.rowIndex="1" />
+                                    <TableView prefHeight="200.0" prefWidth="200.0" GridPane.rowIndex="2">
+                                        <columns>
+                                            <TableColumn prefWidth="75.0" text="C1" />
+                                            <TableColumn prefWidth="75.0" text="C2" />
+                                        </columns>
+                                        <GridPane.margin>
+                                            <Insets left="10.0" right="10.0" />
+                                        </GridPane.margin>
+                                    </TableView>
+                                    <GridPane GridPane.rowIndex="3">
+                                        <columnConstraints>
+                                            <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                                            <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                                        </columnConstraints>
+                                        <rowConstraints>
+                                            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+
+                                        </rowConstraints>
+                                        <children>
+                                            <Button fx:id="btn_save_draft" mnemonicParsing="false" text="Save Draft" GridPane.halignment="RIGHT">
+                                                <GridPane.margin>
+                                                    <Insets right="5.0" />
+                                                </GridPane.margin></Button>
+                                            <Button fx:id="btn_submit" mnemonicParsing="false" style="-fx-background-color: green;" text="Submit" textFill="WHITE" GridPane.columnIndex="1" GridPane.halignment="LEFT">
+                                                <GridPane.margin>
+                                                    <Insets left="5.0" />
+                                                </GridPane.margin></Button>
+                                        </children>
+                                    </GridPane>
+                                </children>
+                            </GridPane>
+                        </children>
                     </AnchorPane>
                 </content>
                 </Tab>
                 <Tab fx:id="btn_update_delete_attendance" text="Update / Delete Attendance">
                     <content>
-                        <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" />
+                        <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                            <children>
+                                <GridPane prefHeight="359.0" prefWidth="585.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                                    <columnConstraints>
+                                        <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="200.0" />
+                                    </columnConstraints>
+                                    <rowConstraints>
+                                        <RowConstraints maxHeight="35.0" minHeight="40.0" prefHeight="35.0" vgrow="SOMETIMES" />
+                                        <RowConstraints maxHeight="40.0" minHeight="40.0" prefHeight="40.0" vgrow="SOMETIMES" />
+                                        <RowConstraints maxHeight="800.0" minHeight="40.0" prefHeight="750.0" vgrow="SOMETIMES" />
+                                        <RowConstraints maxHeight="40.0" minHeight="40.0" prefHeight="40.0" vgrow="SOMETIMES" />
+                                    </rowConstraints>
+                                    <children>
+                                        <GridPane prefHeight="15.0" prefWidth="600.0">
+                                            <columnConstraints>
+                                                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                                                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                                            </columnConstraints>
+                                            <rowConstraints>
+                                                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                            </rowConstraints>
+                                            <children>
+                                                <Label fx:id="update_date_id" text="Date" GridPane.halignment="RIGHT">
+                                                    <GridPane.margin>
+                                                        <Insets right="10.0" top="5.0" />
+                                                    </GridPane.margin>
+                                                </Label>
+                                                <GridPane GridPane.columnIndex="1">
+                                                    <columnConstraints>
+                                                        <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                                                        <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                                                    </columnConstraints>
+                                                    <rowConstraints>
+                                                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                                    </rowConstraints>
+                                                    <children>
+                                                        <DatePicker maxWidth="-Infinity" prefWidth="Infinity">
+                                                            <GridPane.margin>
+                                                                <Insets top="5.0" />
+                                                            </GridPane.margin></DatePicker>
+                                                    </children>
+                                                </GridPane>
+                                            </children>
+                                        </GridPane>
+                                        <TextField fx:id="update_attendance_search" maxWidth="500.0" prefWidth="300.0" GridPane.halignment="CENTER" GridPane.rowIndex="1" />
+                                        <TableView prefHeight="200.0" prefWidth="200.0" GridPane.rowIndex="2">
+                                            <columns>
+                                                <TableColumn prefWidth="75.0" text="C1" />
+                                                <TableColumn prefWidth="75.0" text="C2" />
+                                            </columns>
+                                            <GridPane.margin>
+                                                <Insets left="10.0" right="10.0" />
+                                            </GridPane.margin>
+                                        </TableView>
+                                        <GridPane GridPane.rowIndex="3">
+                                            <columnConstraints>
+                                                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                                                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                                            </columnConstraints>
+                                            <rowConstraints>
+                                                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+
+                                            </rowConstraints>
+                                            <children>
+                                                <Button fx:id="btn_delete" mnemonicParsing="false" style="-fx-background-color: red;" text="Delete All" textFill="WHITE" GridPane.halignment="RIGHT">
+                                                    <GridPane.margin>
+                                                        <Insets right="5.0" />
+                                                    </GridPane.margin></Button>
+                                                <Button fx:id="btn_update" mnemonicParsing="false" style="-fx-background-color: green;" text="Update" textFill="WHITE" GridPane.columnIndex="1" GridPane.halignment="LEFT">
+                                                    <GridPane.margin>
+                                                        <Insets left="5.0" />
+                                                    </GridPane.margin></Button>
+                                            </children>
+                                        </GridPane>
+                                    </children>
+                                </GridPane>
+                            </children>
+                        </AnchorPane>
                     </content>
                 </Tab>
             </tabs>
