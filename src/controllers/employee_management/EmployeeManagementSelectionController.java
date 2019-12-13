@@ -21,7 +21,7 @@ import java.util.ResourceBundle;
 
 public class EmployeeManagementSelectionController implements Initializable {
     @FXML
-    private Button btn_attendance, btn_employee, btn_back;
+    private Button btn_attendance, btn_employee, btn_back, btn_payment;
     @FXML
     private AnchorPane content_pane, root_pane;
 
@@ -67,6 +67,11 @@ public class EmployeeManagementSelectionController implements Initializable {
         navigateToPreviousStage(AppURL.WELCOME_VIEW);
     }
 
+    @FXML
+    public void didClick_btn_paymentDetails(){
+        loadUI(AppURL.PAYEMENT_DETAILS);
+    }
+
     private void loadLang(String lang) throws Exception {
         locale = new Locale(lang);
         bundle = ResourceBundle.getBundle("common.lang", locale);
@@ -74,6 +79,7 @@ public class EmployeeManagementSelectionController implements Initializable {
         btn_attendance.setText(bundle.getString("btn_attendance"));
         btn_employee.setText(bundle.getString("btn_employee"));
         btn_back.setText(bundle.getString("btn_back"));
+        btn_payment.setText(bundle.getString("btn_payment"));
     }
 
     private void navigateToPreviousStage(String scenePath) {

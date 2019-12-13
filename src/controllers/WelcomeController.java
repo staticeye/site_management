@@ -36,9 +36,11 @@ public class WelcomeController implements Initializable {
             if (StaticAttributes.isSinhalaEnable) {
                 loadLang("sinhala");
                 loadAlertLang("sinhala");
+                StaticAttributes.user_language = "sinhala";
             } else {
                 loadLang("english");
                 loadAlertLang("english");
+                StaticAttributes.user_language = "english";
             }
         } catch (Exception e) {
             new Log("WelcomeController - navigateToNextStage : ", e).error();
@@ -52,6 +54,7 @@ public class WelcomeController implements Initializable {
         StaticAttributes.isSinhalaEnable = true;
         loadLang("sinhala");
         loadAlertLang("sinhala");
+        StaticAttributes.user_language = "sinhala";
     }
 
     @FXML
@@ -60,6 +63,7 @@ public class WelcomeController implements Initializable {
         StaticAttributes.isSinhalaEnable = false;
         loadLang("english");
         loadAlertLang("english");
+        StaticAttributes.user_language = "english";
     }
 
     @FXML
@@ -102,6 +106,7 @@ public class WelcomeController implements Initializable {
         AppStrings.SOMETHING_WRONG = bundle.getString("SOMETHING_WRONG");
         AppStrings.ERROR = bundle.getString("ERROR");
         AppStrings.ALERT_BUTTON = bundle.getString("ALERT_BUTTON");
+        AppStrings.CONFIRMATION = bundle.getString("CONFIRMATION");
     }
 
 

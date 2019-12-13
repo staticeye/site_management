@@ -36,6 +36,7 @@ public class SitesManagementSelectionController implements Initializable {
     String header = "";
     String comboText = "";
 
+
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         try {
@@ -67,9 +68,19 @@ public class SitesManagementSelectionController implements Initializable {
     @FXML
     public void didClick_btn_addNewSite(){
         List<String> choices = loadFloorCount();
-        AppDialogs.viewChoiceDialog(choices, defaultChoice, header, comboText);
+        AppDialogs.viewChoiceDialog(choices, defaultChoice, AppStrings.CONFIRMATION, header, comboText, floors -> validateAndProceedToNext(floors));
     }
 
+    private void validateAndProceedToNext(String floorCount){
+        locale = new Locale(StaticAttributes.user_language);
+        bundle = ResourceBundle.getBundle("common.lang", locale);
+
+        if (floorCount == bundle.getString("defaultChoice")){
+            return;
+        }
+
+
+    }
     private void navigateToPreviousStage(String scenePath) {
         try {
             primaryStage = (Stage) btn_add_new_site.getScene().getWindow();

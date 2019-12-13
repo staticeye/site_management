@@ -6,10 +6,9 @@ import javafx.scene.control.ButtonType;
 import javafx.scene.control.ChoiceDialog;
 import javafx.scene.image.Image;
 import javafx.stage.Stage;
-
-import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
+import java.util.function.Consumer;
 
 public class AppDialogs {
     public static void viewDialog(String title, String content, Alert.AlertType alertType, String titleIconURL, String buttonText) {
@@ -22,17 +21,17 @@ public class AppDialogs {
         alert.showAndWait();
     }
 
-    public static void viewChoiceDialog(List<String> list, String defaultChoice, String header, String comboText) {
+    public static void viewChoiceDialog(List<String> list, String defaultChoice, String title, String header, String comboText, Consumer<String> func) {
         List<String> choices = list;
         ChoiceDialog<String> dialog = new ChoiceDialog<>(defaultChoice, choices);
+        dialog.setTitle(title);
         dialog.setHeaderText(header);
         ((Stage) dialog.getDialogPane().getScene().getWindow()).getIcons().add(new Image("/assets/icons/icon.png"));
         dialog.setContentText(comboText);
         Optional<String> result = dialog.showAndWait();
 
         if (result.isPresent()) {
-//            System.out.println("Your choice: " + result.get());
+            func.accept(result.get());
         }
-//        result.ifPresent(letter -> System.out.println("Your choice: " + letter));
     }
 }

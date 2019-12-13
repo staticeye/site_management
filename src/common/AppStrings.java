@@ -7,6 +7,7 @@ public class AppStrings {
     public static String SOMETHING_WRONG = "Oops!, Something went wrong.";
     public static String ERROR = "Error";
     public static String ALERT_BUTTON = "OK";
+    public static String CONFIRMATION = "Confirmation";
 
     //Welcome view strings
 

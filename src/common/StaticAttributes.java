@@ -10,6 +10,7 @@ import javafx.stage.Stage;
 public class StaticAttributes {
     public final static String isSinhalaEnableKey = "key_isSinhalaEnableKey";
     public static boolean isSinhalaEnable = false;
+    public static String user_language = "sinhala";
 
     public static void setStage(Stage stage, Parent root, double stageWidth, double stageHeight) {
 
