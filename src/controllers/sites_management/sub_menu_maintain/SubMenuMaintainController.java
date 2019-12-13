@@ -20,13 +20,13 @@ public class SubMenuMaintainController implements Initializable {
     @FXML
     Button  btn_save_draft, btn_submit;
     @FXML
-    Label menu_id, menu_name;
+    Label menu_id, menu_name, main_menu;
     @FXML
     TableView add_sub_menu_tableView;
 
     //View update delete menu
     @FXML
-    Label update_sub_menu_id, update_sub_menu_name;
+    Label update_sub_menu_id, update_sub_menu_name, main_menu_name;
     @FXML
     Button  btn_update, btn_delete;
     @FXML
@@ -43,7 +43,7 @@ public class SubMenuMaintainController implements Initializable {
                 loadLang("english");
             }
         } catch (Exception e) {
-            new Log("AddMenuController - initialize : ", e).error();
+            new Log("SubMenuMaintainController - initialize : ", e).error();
             AppDialogs.viewDialog("Error", AppStrings.SOMETHING_WRONG, Alert.AlertType.ERROR, AppURL.ERROR_ALERT_ICON, AppStrings.ALERT_BUTTON);
         }
     }
@@ -59,13 +59,16 @@ public class SubMenuMaintainController implements Initializable {
         btn_save_draft.setText(bundle.getString("btn_save_draft"));
         btn_submit.setText(bundle.getString("btn_submit"));
 
+        main_menu_name.setText(bundle.getString("main_menu"));
         update_sub_menu_id.setText(bundle.getString("update_sub_menu_id"));
         update_sub_menu_name.setText(bundle.getString("update_sub_menu_name"));
+        main_menu.setText(bundle.getString("main_menu"));
         btn_update.setText(bundle.getString("btn_update"));
         btn_delete.setText(bundle.getString("btn_delete_menu"));
 
         add_sub_menu_tableView.setPlaceholder(new Label(bundle.getString("no_table_view_content")));
         update_sub_menu_tableView.setPlaceholder(new Label(bundle.getString("no_table_view_content")));
         update_sub_menu_tableView_2.setPlaceholder(new Label(bundle.getString("no_table_view_content")));
+
     }
 }

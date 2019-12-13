@@ -27,12 +27,12 @@
                             <children>
                                 <VBox prefHeight="200.0" prefWidth="230.0">
                                     <children>
-                                        <Button fx:id="btn_add_new_site" maxWidth="300.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="300.0" text="Add New Site">
+                                        <Button fx:id="btn_view_sites" maxWidth="300.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="300.0" text="View Sites">
                                             <VBox.margin>
                                                 <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
                                             </VBox.margin>
                                         </Button>
-                                        <Button fx:id="btn_view_sites" maxWidth="300.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="300.0" text="View Sites">
+                                        <Button fx:id="btn_add_new_site" maxWidth="300.0" mnemonicParsing="false" onAction="#didClick_btn_addNewSite" prefHeight="40.0" prefWidth="300.0" text="Add New Site">
                                             <VBox.margin>
                                                 <Insets bottom="10.0" left="10.0" right="10.0" />
                                             </VBox.margin>

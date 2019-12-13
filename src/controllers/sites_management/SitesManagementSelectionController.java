@@ -17,6 +17,8 @@ import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 
 import java.net.URL;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Locale;
 import java.util.ResourceBundle;
 
@@ -30,6 +32,9 @@ public class SitesManagementSelectionController implements Initializable {
     Stage primaryStage;
     private ResourceBundle bundle;
     private Locale locale;
+    String defaultChoice = "";
+    String header = "";
+    String comboText = "";
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
@@ -59,6 +64,12 @@ public class SitesManagementSelectionController implements Initializable {
         loadUI(AppURL.SUB_MENU_MAINTAIN);
     }
 
+    @FXML
+    public void didClick_btn_addNewSite(){
+        List<String> choices = loadFloorCount();
+        AppDialogs.viewChoiceDialog(choices, defaultChoice, header, comboText);
+    }
+
     private void navigateToPreviousStage(String scenePath) {
         try {
             primaryStage = (Stage) btn_add_new_site.getScene().getWindow();
@@ -83,6 +94,10 @@ public class SitesManagementSelectionController implements Initializable {
         btn_maintain_menu.setText(bundle.getString("btn_maintain_menu"));
         btn_maintain_sub_menus.setText(bundle.getString("btn_maintain_sub_menus"));
         btn_back.setText(bundle.getString("btn_back"));
+
+        defaultChoice = bundle.getString("defaultChoice");
+        header = bundle.getString("header");
+        comboText = bundle.getString("comboText");
     }
 
     private void loadUI(String UiName) {
@@ -103,5 +118,12 @@ public class SitesManagementSelectionController implements Initializable {
 
     }
 
+    private List<String> loadFloorCount(){
+        List<String> choices = new ArrayList<>();
 
+        for (int index = 1; index <= 10; index++){
+            choices.add(Integer.toString(index));
+        }
+        return choices;
+    }
 }
