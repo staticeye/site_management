@@ -15,7 +15,9 @@ import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
+import properties.SiteProperties;
 
+import java.io.IOException;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.List;
@@ -58,29 +60,40 @@ public class SitesManagementSelectionController implements Initializable {
     }
 
     @FXML
-    public void didClick_btn_menu_maintain(){loadUI(AppURL.MENU_MAINTAIN);}
+    public void didClick_btn_menu_maintain() {
+        loadUI(AppURL.MENU_MAINTAIN);
+    }
 
     @FXML
-    public void didClick_btn_sub_menu_maintain(){
+    public void didClick_btn_sub_menu_maintain() {
         loadUI(AppURL.SUB_MENU_MAINTAIN);
     }
 
     @FXML
-    public void didClick_btn_addNewSite(){
+    public void didClick_btn_addNewSite() {
         List<String> choices = loadFloorCount();
-        AppDialogs.viewChoiceDialog(choices, defaultChoice, AppStrings.CONFIRMATION, header, comboText, floors -> validateAndProceedToNext(floors));
+        AppDialogs.viewChoiceDialog(choices, defaultChoice, AppStrings.CONFIRMATION, header, comboText, floors -> {
+            try {
+                validateAndProceedToNext(floors);
+            } catch (Exception e) {
+                new Log("SiteManagementSelectionController - didClick_btn_addNewSite : ", e).error();
+                AppDialogs.viewDialog("Error", AppStrings.SOMETHING_WRONG, Alert.AlertType.ERROR, AppURL.ERROR_ALERT_ICON, AppStrings.ALERT_BUTTON);
+            }
+        });
     }
 
-    private void validateAndProceedToNext(String floorCount){
+    private void validateAndProceedToNext(String floorCount) throws IOException {
         locale = new Locale(StaticAttributes.user_language);
         bundle = ResourceBundle.getBundle("common.lang", locale);
 
-        if (floorCount == bundle.getString("defaultChoice")){
+        if (floorCount == bundle.getString("defaultChoice")) {
             return;
         }
-
+        SiteProperties.current_add_sites_floor_count = Integer.parseInt(floorCount);
+        loadUI(AppURL.MENU_SELECTION);
 
     }
+
     private void navigateToPreviousStage(String scenePath) {
         try {
             primaryStage = (Stage) btn_add_new_site.getScene().getWindow();
@@ -109,6 +122,7 @@ public class SitesManagementSelectionController implements Initializable {
         defaultChoice = bundle.getString("defaultChoice");
         header = bundle.getString("header");
         comboText = bundle.getString("comboText");
+
     }
 
     private void loadUI(String UiName) {
@@ -129,10 +143,10 @@ public class SitesManagementSelectionController implements Initializable {
 
     }
 
-    private List<String> loadFloorCount(){
+    private List<String> loadFloorCount() {
         List<String> choices = new ArrayList<>();
 
-        for (int index = 1; index <= 10; index++){
+        for (int index = 1; index <= 10; index++) {
             choices.add(Integer.toString(index));
         }
         return choices;
