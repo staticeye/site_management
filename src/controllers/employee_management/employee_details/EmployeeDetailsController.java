@@ -5,12 +5,16 @@ import common.AppStrings;
 import common.AppURL;
 import common.StaticAttributes;
 import helpers.Log;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.*;
 import javafx.scene.layout.GridPane;
+import service.OccupationsService;
 
 import java.net.URL;
+import java.sql.ResultSet;
 import java.util.Locale;
 import java.util.ResourceBundle;
 
@@ -28,6 +32,8 @@ public class EmployeeDetailsController implements Initializable {
     CheckBox join_date_today_check;
     @FXML
     DatePicker datepicker;
+    @FXML
+    ComboBox occupations_combo_update, occupations_combo_add;
 
     //View employee details
     @FXML
@@ -52,9 +58,25 @@ public class EmployeeDetailsController implements Initializable {
     private ResourceBundle bundle;
     private Locale locale;
 
+    OccupationsService occupationsService = new OccupationsService();
+    ObservableList<String> options =
+            FXCollections.observableArrayList();
+
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         try {
+            if (occupationsService.isDatabaseConnected()) {
+                ResultSet resultSet = occupationsService.getAllOccupations();
+                while (resultSet.next()) {
+                    options.add(resultSet.getString(1));
+                }
+                occupations_combo_update.setItems(options);
+                occupations_combo_add.setItems(options);
+
+            } else {
+                AppDialogs.viewDialog("Error", AppStrings.DATABASE_CONNECTION_ERROR, Alert.AlertType.ERROR, AppURL.ERROR_ALERT_ICON, AppStrings.ALERT_BUTTON);
+                throw new Exception(AppStrings.DATABASE_CONNECTION_ERROR);
+            }
             if (StaticAttributes.isSinhalaEnable) {
                 loadLang("sinhala");
             } else {

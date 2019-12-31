@@ -14,10 +14,8 @@ import javafx.scene.Parent;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.stage.Stage;
-import service.DatabaseService;
 
 import java.net.URL;
-import java.sql.ResultSet;
 import java.util.Locale;
 import java.util.ResourceBundle;
 import java.util.prefs.Preferences;
@@ -30,25 +28,11 @@ public class WelcomeController implements Initializable {
     private Locale locale;
     Preferences pref;
     Stage primaryStage;
-    DatabaseService databaseService = new DatabaseService();
-
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         pref = Preferences.userNodeForPackage(Main.class);
-
-
         try {
-            if (this.databaseService.isDatabaseConnected()){
-                ResultSet resultSet = databaseService.select("SELECT * FROM my_table");
-                while(resultSet.next()){
-                    System.out.println(resultSet.getString(2));
-                }
-
-            }else{
-                System.out.println("Not connected");
-            }
-
             if (StaticAttributes.isSinhalaEnable) {
                 loadLang("sinhala");
                 loadAlertLang("sinhala");

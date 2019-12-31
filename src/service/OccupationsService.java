@@ -12,14 +12,14 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
-public class DatabaseService {
+public class OccupationsService {
     Connection connection;
 
-    public DatabaseService() {
+    public OccupationsService() {
         try {
             this.connection = DbConnection.getConnection();
         } catch (Exception e) {
-            new Log("WelcomeController - navigateToNextStage : ", e).error();
+            new Log("OccupationsService - OccupationsService : ", e).error();
             AppDialogs.viewDialog(AppStrings.ERROR, AppStrings.SOMETHING_WRONG, Alert.AlertType.ERROR, AppURL.ERROR_ALERT_ICON, AppStrings.ALERT_BUTTON);
         }
 
@@ -32,16 +32,19 @@ public class DatabaseService {
         return this.connection != null;
     }
 
-    public ResultSet select(String sql) throws SQLException {
+    //----------------------------------------------------------
+    public ResultSet getAllOccupations() throws SQLException {
         PreparedStatement preparedStatement = null;
         ResultSet resultSet = null;
+        String sql = "SELECT occupation FROM occupations";
         try {
             preparedStatement = this.connection.prepareStatement(sql);
             resultSet = preparedStatement.executeQuery();
-
         } catch (Exception e) {
             e.printStackTrace();
         }
         return resultSet;
     }
+
+
 }

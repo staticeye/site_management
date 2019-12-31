@@ -228,7 +228,7 @@
 
                                             </rowConstraints>
                                             <children>
-                                                <ComboBox prefHeight="26.0" prefWidth="195.0" />
+                                                <ComboBox fx:id="occupations_combo_add" prefHeight="26.0" prefWidth="195.0" />
                                                 <Button fx:id="btn_edit_occupations" mnemonicParsing="false" GridPane.columnIndex="1">
                                                     <GridPane.margin>
                                                         <Insets left="5.0" />
@@ -418,7 +418,7 @@
 
                                             </rowConstraints>
                                             <children>
-                                                <ComboBox prefHeight="26.0" prefWidth="195.0" />
+                                                <ComboBox fx:id="occupations_combo_update" prefHeight="26.0" prefWidth="195.0" />
                                                 <Button fx:id="btn_update_occupations" mnemonicParsing="false" GridPane.columnIndex="1">
                                                     <GridPane.margin>
                                                         <Insets left="5.0" />
