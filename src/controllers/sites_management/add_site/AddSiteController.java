@@ -10,7 +10,7 @@ import javafx.fxml.Initializable;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Tab;
 import javafx.scene.control.TabPane;
-import properties.SiteProperties;
+import properties.*;
 
 import java.net.URL;
 import java.util.Locale;

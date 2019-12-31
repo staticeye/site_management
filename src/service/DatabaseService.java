@@ -12,10 +12,10 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
-public class WelcomeService {
+public class DatabaseService {
     Connection connection;
 
-    public WelcomeService() {
+    public DatabaseService() {
         try {
             this.connection = DbConnection.getConnection();
         } catch (Exception e) {
@@ -32,7 +32,7 @@ public class WelcomeService {
         return this.connection != null;
     }
 
-    public ResultSet Select(String sql) throws SQLException {
+    public ResultSet select(String sql) throws SQLException {
         PreparedStatement preparedStatement = null;
         ResultSet resultSet = null;
         try {
@@ -41,11 +41,6 @@ public class WelcomeService {
 
         } catch (Exception e) {
             e.printStackTrace();
-        } finally {
-            {
-                preparedStatement.close();
-                resultSet.close();
-            }
         }
         return resultSet;
     }
