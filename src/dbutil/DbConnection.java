@@ -6,14 +6,9 @@ import common.AppURL;
 import helpers.Log;
 import javafx.scene.control.Alert;
 
-import java.sql.Connection;
-import java.sql.DriverManager;
-import java.sql.SQLException;
+import java.sql.*;
 
 public class DbConnection {
-    private static final String USERNAME = "dbuser";
-    private static final String PASSWORD = "dbpassword";
-    private static final String CONN = "jdbc:mysql://localhost/login";
     private static final String SQCONN = "jdbc:sqlite:site_management.sqlite";
 
     public static Connection getConnection ()throws SQLException{
@@ -27,6 +22,26 @@ public class DbConnection {
         return null;
     }
 
+    public static void insertDB(Connection connection, String qry){
+        PreparedStatement preparedStatement = null;
+        try {
+            preparedStatement = connection.prepareStatement(qry);
+            preparedStatement.execute();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
 
-//    private static final St
+    public static ResultSet selectDB(Connection connection, String qry){
+        PreparedStatement preparedStatement = null;
+        ResultSet resultSet = null;
+        String sql = "SELECT * FROM occupations";
+        try {
+            preparedStatement = connection.prepareStatement(sql);
+            resultSet = preparedStatement.executeQuery();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return resultSet;
+    }
 }

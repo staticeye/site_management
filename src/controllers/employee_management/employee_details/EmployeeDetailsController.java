@@ -4,19 +4,27 @@ import common.AppDialogs;
 import common.AppStrings;
 import common.AppURL;
 import common.StaticAttributes;
+import helpers.Component;
 import helpers.Log;
+import javafx.beans.Observable;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.*;
 import javafx.scene.layout.GridPane;
-import service.OccupationsService;
+import models.Employee;
+import models.Occupation;
 
 import java.net.URL;
 import java.sql.ResultSet;
+import java.time.LocalDate;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Locale;
 import java.util.ResourceBundle;
+import java.util.function.UnaryOperator;
 
 public class EmployeeDetailsController implements Initializable {
     //Employee details
@@ -34,6 +42,10 @@ public class EmployeeDetailsController implements Initializable {
     DatePicker datepicker;
     @FXML
     ComboBox occupations_combo_update, occupations_combo_add;
+    @FXML
+    TextField add_employee_id, employee_name, employee_mobile_1, employee_mobile_2, employee_dailysalary, employee_ot_rate, annual_bonus;
+
+    boolean isAddEmployeeCheckSelected = false;
 
     //View employee details
     @FXML
@@ -58,34 +70,84 @@ public class EmployeeDetailsController implements Initializable {
     private ResourceBundle bundle;
     private Locale locale;
 
-    OccupationsService occupationsService = new OccupationsService();
+    Occupation occupation = new Occupation();
     ObservableList<String> options =
             FXCollections.observableArrayList();
+    List<Occupation> occupationList = new ArrayList<Occupation>();
+    Employee add_employee;
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        try {
-            if (occupationsService.isDatabaseConnected()) {
-                ResultSet resultSet = occupationsService.getAllOccupations();
-                while (resultSet.next()) {
-                    options.add(resultSet.getString(1));
-                }
-                occupations_combo_update.setItems(options);
-                occupations_combo_add.setItems(options);
 
-            } else {
-                AppDialogs.viewDialog("Error", AppStrings.DATABASE_CONNECTION_ERROR, Alert.AlertType.ERROR, AppURL.ERROR_ALERT_ICON, AppStrings.ALERT_BUTTON);
-                throw new Exception(AppStrings.DATABASE_CONNECTION_ERROR);
-            }
+        try {
+            init();
             if (StaticAttributes.isSinhalaEnable) {
                 loadLang("sinhala");
             } else {
                 loadLang("english");
             }
-            setGridPane();
+
         } catch (Exception e) {
             new Log("EmployeeDetailsController - initialize : ", e).error();
             AppDialogs.viewDialog("Error", AppStrings.SOMETHING_WRONG, Alert.AlertType.ERROR, AppURL.ERROR_ALERT_ICON, AppStrings.ALERT_BUTTON);
+        }
+    }
+
+    private void didSelectAddEmployeeCheckBox(Observable observable) {
+        if (!isAddEmployeeCheckSelected) {
+            join_date_today_check.setSelected(false);
+        }
+        isAddEmployeeCheckSelected = false;
+    }
+
+
+    private void didClickAddEmployeeCheckBox(ActionEvent event) {
+        if (join_date_today_check.isSelected()) {
+            isAddEmployeeCheckSelected = true;
+            datepicker.setValue(Component.setDatePickerCurrentDate());
+        } else {
+            datepicker.setValue(null);
+        }
+    }
+    UnaryOperator<TextFormatter.Change> doubleFilter = change -> {
+        String input = change.getText();
+
+        if ((input.matches("[\\d\\.]+")) || change.isDeleted()) {
+            return change;
+        }
+        return null;
+    };
+
+    private void init() throws Exception {
+        List<TextField> numberTextFieldList = new ArrayList<TextField>();
+        numberTextFieldList.add(employee_mobile_1);
+        numberTextFieldList.add(employee_mobile_2);
+        numberTextFieldList.add(employee_dailysalary);
+        numberTextFieldList.add(employee_ot_rate);
+        numberTextFieldList.add(annual_bonus);
+        add_employee = new Employee();
+
+        setGridPane();
+        join_date_today_check.setOnAction(this::didClickAddEmployeeCheckBox);
+        datepicker.valueProperty().addListener(this::didSelectAddEmployeeCheckBox);
+        employee_name.textProperty().addListener((observable, oldValue, newValue) -> {
+            Component.textFieldAcceptOnlyLetters(newValue, employee_name);
+        });
+        Component.applyTextFieldFormatterOnlyNumbers(numberTextFieldList);
+
+        add_employee_id.setText(add_employee.getId());
+        if (occupation.isDatabaseConnected()) {
+            ResultSet resultSet = occupation.getAllOccupations();
+            while (resultSet.next()) {
+                occupationList.add(new Occupation(Integer.parseInt(resultSet.getString(1)), resultSet.getString(2), resultSet.getString(2)));
+                options.add(resultSet.getString(2) + " | " + resultSet.getString(3));
+            }
+            occupations_combo_update.setItems(options);
+            occupations_combo_add.setItems(options);
+
+        } else {
+            AppDialogs.viewDialog("Error", AppStrings.DATABASE_CONNECTION_ERROR, Alert.AlertType.ERROR, AppURL.ERROR_ALERT_ICON, AppStrings.ALERT_BUTTON);
+            throw new Exception(AppStrings.DATABASE_CONNECTION_ERROR);
         }
     }
 
@@ -146,5 +208,55 @@ public class EmployeeDetailsController implements Initializable {
         sub_table.setPlaceholder(new Label(bundle.getString("no_table_view_content")));
         update_table.setPlaceholder(new Label(bundle.getString("no_table_view_content")));
     }
+
+    @FXML
+    private void did_Click_Add_Employee_Add(){
+        SingleSelectionModel selectionModel = occupations_combo_add.getSelectionModel();
+        String employeename = employee_name.getText();
+        String mobile1 = employee_mobile_1.getText();
+        String mobile2 = employee_mobile_2.getText();
+        LocalDate joinDate = datepicker.getValue();
+        int occupation = selectionModel.getSelectedIndex();
+        String dailySalry = employee_dailysalary.getText();
+        String otRate = employee_ot_rate.getText();
+        String bonus = annual_bonus.getText();
+
+        if (employeename.isEmpty() || joinDate == null || occupation == -1 || dailySalry.isEmpty() || otRate.isEmpty() || bonus.isEmpty()){
+            AppDialogs.viewDialog("Error", AppStrings.MANDATORY_FIELDS, Alert.AlertType.ERROR, AppURL.ERROR_ALERT_ICON, AppStrings.ALERT_BUTTON);
+        }else{
+            add_employee.setName(employeename);
+            add_employee.setMobile_number(mobile1);
+            add_employee.setMobile_number2(mobile2);
+            add_employee.setDate(joinDate);
+            add_employee.setOccupation(occupationList.get(occupation));
+            add_employee.setDailySalary(dailySalry);
+            add_employee.setOtRate(otRate);
+            add_employee.setBonus(bonus);
+
+            add_employee.insertEmployeeDB();
+            clearFields();
+            add_employee = new Employee();
+            add_employee_id.setText(add_employee.getId());
+        }
+
+    }
+    @FXML
+    private void did_Click_Add_Employee_Clear(){
+        clearFields();
+    }
+
+    private void clearFields(){
+        employee_name.setText("");
+        employee_mobile_1.setText("");
+        employee_mobile_2.setText("");
+        employee_dailysalary.setText("");
+        employee_ot_rate.setText("");
+        annual_bonus.setText("");
+        datepicker.setValue(null);
+        join_date_today_check.setSelected(false);
+        isAddEmployeeCheckSelected = false;
+        occupations_combo_add.valueProperty().set(null);
+    }
+
 
 }

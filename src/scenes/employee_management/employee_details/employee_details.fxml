@@ -186,7 +186,7 @@
                                                 <Insets left="10.0" />
                                             </GridPane.margin>
                                         </Label>
-                                        <TextField GridPane.columnIndex="1" />
+                                        <TextField fx:id="add_employee_id" disable="true" GridPane.columnIndex="1" />
                                         <TextField fx:id="employee_name" GridPane.columnIndex="1" GridPane.rowIndex="1" />
                                         <GridPane GridPane.columnIndex="1" GridPane.rowIndex="2">
                                             <columnConstraints>
@@ -239,12 +239,12 @@
                                                 </Button>
                                             </children>
                                         </GridPane>
-                                        <TextField GridPane.columnIndex="4">
+                                        <TextField fx:id="employee_dailysalary" GridPane.columnIndex="4">
                                             <GridPane.margin>
                                                 <Insets right="10.0" />
                                             </GridPane.margin>
                                         </TextField>
-                                        <TextField GridPane.columnIndex="4" GridPane.rowIndex="1">
+                                        <TextField fx:id="employee_ot_rate" GridPane.columnIndex="4" GridPane.rowIndex="1">
                                             <GridPane.margin>
                                                 <Insets right="10.0" />
                                             </GridPane.margin>
@@ -263,7 +263,7 @@
                                                 <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
                                             </rowConstraints>
                                             <children>
-                                                <Button fx:id="btn_add" mnemonicParsing="false" text="Add" GridPane.halignment="RIGHT">
+                                                <Button fx:id="btn_add" mnemonicParsing="false" onAction="#did_Click_Add_Employee_Add" text="Add" GridPane.halignment="RIGHT">
                                                     <padding>
                                                         <Insets bottom="5.0" left="25.0" right="25.0" top="5.0" />
                                                     </padding>
@@ -271,7 +271,7 @@
                                                         <Insets right="5.0" />
                                                     </GridPane.margin>
                                                 </Button>
-                                                <Button fx:id="btn_clear" mnemonicParsing="false" style="-fx-background-color: red;" text="Clear" textFill="WHITE" GridPane.columnIndex="1" GridPane.halignment="LEFT">
+                                                <Button fx:id="btn_clear" mnemonicParsing="false" onAction="#did_Click_Add_Employee_Clear" style="-fx-background-color: red;" text="Clear" textFill="WHITE" GridPane.columnIndex="1" GridPane.halignment="LEFT">
                                                     <padding>
                                                         <Insets bottom="5.0" left="25.0" right="25.0" top="5.0" />
                                                     </padding>
