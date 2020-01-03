@@ -4,6 +4,7 @@ import common.AppDialogs;
 import common.AppStrings;
 import common.AppURL;
 import common.StaticAttributes;
+import controllers.popups.OccupationView;
 import helpers.Component;
 import helpers.Log;
 import javafx.beans.Observable;
@@ -11,12 +12,19 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.layout.GridPane;
+import javafx.stage.Modality;
+import javafx.stage.Stage;
 import models.Employee;
 import models.Occupation;
+import models.Person;
 
+import java.io.IOException;
 import java.net.URL;
 import java.sql.ResultSet;
 import java.time.LocalDate;
@@ -75,6 +83,7 @@ public class EmployeeDetailsController implements Initializable {
             FXCollections.observableArrayList();
     List<Occupation> occupationList = new ArrayList<Occupation>();
     Employee add_employee;
+    private ObservableList<Person> tvObservableList = FXCollections.observableArrayList();
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
@@ -238,8 +247,22 @@ public class EmployeeDetailsController implements Initializable {
             add_employee = new Employee();
             add_employee_id.setText(add_employee.getId());
         }
-
     }
+
+    @FXML
+    private void did_Click_Edit_Occupation() throws IOException {
+        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource(AppURL.OCCUPATION_VIEW));
+        Parent parent = fxmlLoader.load();
+        OccupationView dialogController = fxmlLoader.<OccupationView>getController();
+        dialogController.setAppMainObservableList(tvObservableList);
+
+        Scene scene = new Scene(parent, 300, 200);
+        Stage stage = new Stage();
+        stage.initModality(Modality.APPLICATION_MODAL);
+        stage.setScene(scene);
+        stage.showAndWait();
+    }
+
     @FXML
     private void did_Click_Add_Employee_Clear(){
         clearFields();

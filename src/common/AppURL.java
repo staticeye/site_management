@@ -24,5 +24,6 @@ public class AppURL {
     final public static String SUB_MENU_MAINTAIN = "/scenes/sites_management/sub_menu_maintain/sub_menu_maintain.fxml";
     final public static String PAYEMENT_DETAILS = "/scenes/employee_management/payment_details/payment_details.fxml";
     final public static String MENU_SELECTION = "/scenes/sites_management/add_site/add_site.fxml";
+    final public static String OCCUPATION_VIEW = "/scenes/popups/occupation_view.fxml";
 
 }
