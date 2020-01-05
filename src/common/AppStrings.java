@@ -10,6 +10,9 @@ public class AppStrings {
     public static String ERROR = "Error";
     public static String ALERT_BUTTON = "OK";
     public static String CONFIRMATION = "Confirmation";
+    public static String EMPTY_FIELDS_OCCUPATION = "Please update occupation";
+    public static String SUCCESS = "Success";
+    public static String DATA_INSERT_SUCCESS = "Data inserted successfully!";
 
     //Welcome view strings
 

@@ -14,7 +14,6 @@ import javafx.scene.Parent;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.stage.Stage;
-
 import java.net.URL;
 import java.util.Locale;
 import java.util.ResourceBundle;
@@ -51,6 +50,7 @@ public class WelcomeController implements Initializable {
     @FXML
     public void didClick_btn_sinhala(ActionEvent event) throws Exception {
         pref.putBoolean(StaticAttributes.isSinhalaEnableKey, true);
+        System.out.println(pref.getBoolean(StaticAttributes.isSinhalaEnableKey, false));
         StaticAttributes.isSinhalaEnable = true;
         loadLang("sinhala");
         loadAlertLang("sinhala");
@@ -60,6 +60,7 @@ public class WelcomeController implements Initializable {
     @FXML
     public void didClick_btn_english(ActionEvent event) throws Exception {
         pref.putBoolean(StaticAttributes.isSinhalaEnableKey, false);
+        System.out.println(pref.getBoolean(StaticAttributes.isSinhalaEnableKey, false));
         StaticAttributes.isSinhalaEnable = false;
         loadLang("english");
         loadAlertLang("english");
@@ -107,6 +108,10 @@ public class WelcomeController implements Initializable {
         AppStrings.ERROR = bundle.getString("ERROR");
         AppStrings.ALERT_BUTTON = bundle.getString("ALERT_BUTTON");
         AppStrings.CONFIRMATION = bundle.getString("CONFIRMATION");
+        AppStrings.EMPTY_FIELDS_OCCUPATION = bundle.getString("EMPTY_FIELDS_OCCUPATION");
+        AppStrings.DATABASE_CONNECTION_ERROR = bundle.getString("DATABASE_CONNECTION_ERROR");
+        AppStrings.SUCCESS = bundle.getString("SUCCESS");
+        AppStrings.DATA_INSERT_SUCCESS = bundle.getString("DATA_INSERT_SUCCESS");
     }
 
 

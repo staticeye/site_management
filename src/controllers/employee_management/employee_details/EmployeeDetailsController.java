@@ -1,10 +1,6 @@
 package controllers.employee_management.employee_details;
 
-import common.AppDialogs;
-import common.AppStrings;
-import common.AppURL;
-import common.StaticAttributes;
-import controllers.popups.OccupationView;
+import common.*;
 import helpers.Component;
 import helpers.Log;
 import javafx.beans.Observable;
@@ -12,17 +8,11 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
-import javafx.scene.Parent;
-import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.layout.GridPane;
-import javafx.stage.Modality;
-import javafx.stage.Stage;
 import models.Employee;
 import models.Occupation;
-import models.Person;
 
 import java.io.IOException;
 import java.net.URL;
@@ -83,7 +73,8 @@ public class EmployeeDetailsController implements Initializable {
             FXCollections.observableArrayList();
     List<Occupation> occupationList = new ArrayList<Occupation>();
     Employee add_employee;
-    private ObservableList<Person> tvObservableList = FXCollections.observableArrayList();
+    String editOccupationStageName = "";
+
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
@@ -145,6 +136,10 @@ public class EmployeeDetailsController implements Initializable {
         Component.applyTextFieldFormatterOnlyNumbers(numberTextFieldList);
 
         add_employee_id.setText(add_employee.getId());
+        addOccupation();
+    }
+
+    private void addOccupation() throws Exception {
         if (occupation.isDatabaseConnected()) {
             ResultSet resultSet = occupation.getAllOccupations();
             while (resultSet.next()) {
@@ -159,7 +154,6 @@ public class EmployeeDetailsController implements Initializable {
             throw new Exception(AppStrings.DATABASE_CONNECTION_ERROR);
         }
     }
-
     private void setGridPane() {
         GridPane.setColumnSpan(sub_gridpane, 5);
         GridPane.setColumnSpan(sub_table, 3);
@@ -216,6 +210,8 @@ public class EmployeeDetailsController implements Initializable {
 
         sub_table.setPlaceholder(new Label(bundle.getString("no_table_view_content")));
         update_table.setPlaceholder(new Label(bundle.getString("no_table_view_content")));
+
+        editOccupationStageName = bundle.getString("edit_occupation_stage_name");
     }
 
     @FXML
@@ -251,16 +247,7 @@ public class EmployeeDetailsController implements Initializable {
 
     @FXML
     private void did_Click_Edit_Occupation() throws IOException {
-        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource(AppURL.OCCUPATION_VIEW));
-        Parent parent = fxmlLoader.load();
-        OccupationView dialogController = fxmlLoader.<OccupationView>getController();
-        dialogController.setAppMainObservableList(tvObservableList);
-
-        Scene scene = new Scene(parent, 300, 200);
-        Stage stage = new Stage();
-        stage.initModality(Modality.APPLICATION_MODAL);
-        stage.setScene(scene);
-        stage.showAndWait();
+        new AppComponents().openEditOccupation(getClass(), editOccupationStageName);
     }
 
     @FXML

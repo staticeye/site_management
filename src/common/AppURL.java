@@ -5,6 +5,7 @@ public class AppURL {
     //Image paths
     final public static String APPLICATION_ICON = "/assets/icons/icon.png";
     final public static String ERROR_ALERT_ICON = "/assets/icons/error.png";
+    final public static String SUCCESS_ALERT_ICON = "/assets/icons/success.png";
 
     //Fxml file paths
     final public static String ADD_ATTENDANCE_PATH = "/scenes/employee_management/attendance_details/attendance_details.fxml";

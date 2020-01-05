@@ -4,7 +4,7 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/10.0.2-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.popups.OccupationView">
+<AnchorPane maxHeight="800.0" maxWidth="450.0" minHeight="450.0" minWidth="800.0" prefHeight="450.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/10.0.2-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.popups.OccupationView">
    <children>
       <GridPane layoutX="100.0" layoutY="134.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
         <columnConstraints>
@@ -30,31 +30,31 @@
                   <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
               </rowConstraints>
                <children>
-                  <Label text="Occupation Id">
+                  <Label fx:id="occupation_id_label" text="Occupation Id">
                      <GridPane.margin>
                         <Insets left="10.0" />
                      </GridPane.margin>
                   </Label>
-                  <Label text="English Name" GridPane.rowIndex="1">
+                  <Label fx:id="english_name_label" text="English Name" GridPane.rowIndex="1">
                      <padding>
                         <Insets left="10.0" />
                      </padding>
                   </Label>
-                  <Label text="Sinhala Name" GridPane.rowIndex="2">
+                  <Label fx:id="sinhala_name_label" text="Sinhala Name" GridPane.rowIndex="2">
                      <GridPane.margin>
                         <Insets left="10.0" />
                      </GridPane.margin>
                   </Label>
-                  <TextField GridPane.columnIndex="1">
+                  <TextField fx:id="occupation_id_text" disable="true" GridPane.columnIndex="1">
                      <GridPane.margin>
                         <Insets left="10.0" right="10.0" />
                      </GridPane.margin></TextField>
-                  <TextField GridPane.columnIndex="1" GridPane.rowIndex="1">
+                  <TextField fx:id="occupation_english_text" GridPane.columnIndex="1" GridPane.rowIndex="1">
                      <GridPane.margin>
                         <Insets left="10.0" right="10.0" />
                      </GridPane.margin>
                   </TextField>
-                  <TextField GridPane.columnIndex="1" GridPane.rowIndex="2">
+                  <TextField fx:id="occupation_sinhala_text" GridPane.columnIndex="1" GridPane.rowIndex="2">
                      <GridPane.margin>
                         <Insets left="10.0" right="10.0" />
                      </GridPane.margin>
@@ -69,8 +69,8 @@
 
                     </rowConstraints>
                      <children>
-                        <Button mnemonicParsing="false" onAction="#btnAddPersonClicked" prefWidth="60.0" text="Insert" GridPane.halignment="CENTER" />
-                        <Button mnemonicParsing="false" prefWidth="60.0" text="Update" GridPane.columnIndex="1" GridPane.halignment="CENTER" />
+                        <Button fx:id="insert_button" mnemonicParsing="false" onAction="#did_click_add_occupation" text="Insert" GridPane.halignment="CENTER" />
+                        <Button fx:id="update_button" mnemonicParsing="false" text="Update" GridPane.columnIndex="1" GridPane.halignment="CENTER" />
                      </children>
                   </GridPane>
                   <GridPane GridPane.columnIndex="1" GridPane.rowIndex="4">
@@ -83,8 +83,8 @@
 
                     </rowConstraints>
                      <children>
-                        <Button mnemonicParsing="false" prefWidth="60.0" text="Clear All" GridPane.columnIndex="1" GridPane.halignment="CENTER" />
-                        <Button mnemonicParsing="false" prefWidth="60.0" text="Delete" GridPane.halignment="CENTER" />
+                        <Button fx:id="clear_button" mnemonicParsing="false" text="Clear All" GridPane.columnIndex="1" GridPane.halignment="CENTER" />
+                        <Button fx:id="delete_button" mnemonicParsing="false" text="Delete" GridPane.halignment="CENTER" />
                      </children>
                   </GridPane>
                </children>

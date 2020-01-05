@@ -81,4 +81,26 @@ public class Occupation {
         String sql = "SELECT * FROM occupations";
         return DbConnection.selectDB(this.connection, sql);
     }
+
+    public void generateId() throws SQLException{
+        int id = -1;
+        ResultSet resultSet = null;
+        String sql = "SELECT MAX(id) FROM occupations";
+        resultSet = DbConnection.selectDB(this.connection, sql);
+         if (resultSet == null){
+             this.id = 1;
+         } else{
+             while (resultSet.next()){
+                 id = Integer.parseInt(resultSet.getString(1));
+             }
+             this.id = ++id;
+         }
+
+
+    }
+
+    public void insertOccupation(){
+        String qry = "INSERT INTO occupations (occupation_english, occupation_sinhala) VALUES ('"+this.occupation_english+"','"+this.occupation_sinhala+"')";
+        DbConnection.insertDB(this.connection, qry);
+    }
 }
